@@ -1,10 +1,12 @@
+@media screen and (min-width: 800px) {
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
 header {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
   padding: 0px 18px;
-  gap: 22px;
   background: #e9e9e91c;
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
   border-radius: 0px 0px 8px 8px;
@@ -20,13 +22,8 @@ header {
 }
 .left-header {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  padding: 0px;
-  gap: 10px;
-  width: 321.5px;
-  height: 42.17px;
+  justify-content: space-between;
+  align-items: center;
 }
 .logo-navbar {
   display: flex;
@@ -69,6 +66,17 @@ header {
   font-weight: 600;
   cursor: pointer;
 }
+.change-lang {
+  /* height: 0; */
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+@media screen and (min-width: 800px) {
+  .change-lang {
+    height: auto !important;
+  }
+}
 .change-lang ul li:hover {
   background: #00b0c7;
 }
@@ -76,13 +84,22 @@ header {
   text-decoration: none;
   color: #fff;
 }
+
 .account {
+  height: 0;
+  overflow: hidden;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
   padding: 0px;
   cursor: pointer;
+  transition: all 0.3s linear;
+}
+@media screen and (min-width: 800px) {
+  .account {
+    height: auto !important;
+  }
 }
 .avatar {
   display: flex;
@@ -123,11 +140,10 @@ header {
   width: 0;
   height: 0;
   border: 10px solid transparent;
-  border-color:transparent transparent  rgb(255, 255, 255) transparent;
+  border-color: transparent transparent rgb(255, 255, 255) transparent;
   position: absolute;
   top: -20px;
   left: 45%;
-  
 }
 .profile ul {
   padding: 0;
@@ -151,16 +167,36 @@ header {
   background: #00b0c7;
   color: #828282;
 }
-
+.nav-toggle {
+  font-size: 1.5rem;
+  color: #00b0c7;
+  background: transparent;
+  border-color: transparent;
+  transition: all 0.3s linear;
+  cursor: pointer;
+}
+.nav-toggle:hover {
+  transform: rotate(90deg);
+}
 .security {
+  height: 0;
+  overflow: hidden;
   display: flex;
   flex-direction: row;
   align-items: baseline;
-  padding: 8px 16px;
+  /* padding: 8px 16px; */
+  /* margin-bottom: 16px; */
   gap: 7px;
   background: #ffffff;
   border-radius: 8px;
+  justify-content: center;
 }
+@media screen and (min-width: 800px) {
+  .security {
+    height: auto !important;
+  }
+}
+
 .security a {
   display: flex;
   align-items: center;
@@ -180,4 +216,10 @@ header {
   font-size: 15px;
   line-height: 18px;
   color: #828282;
+}
+
+@media screen and (min-width: 800px) {
+  .nav-toggle {
+    display: none;
+  }
 }

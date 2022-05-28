@@ -1,27 +1,38 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 import { RiLoginCircleLine } from "react-icons/ri";
 // import { useEffect } from "react";
 
-const LoginBtn = ({ setUser, lang }) => {
-  let currentUser = { email: "meruyert@baigroupkz.com" };
-  
-  const processLogin = () =>{
-    setUser(currentUser)
-  }
+const LoginBtn = ({ setUser, lang, showLink }) => {
+  const currentUser = { email: "meruyert@baigroupkz.com" };
+  const loginContainer = useRef(null);
+
+  useEffect(() => {
+    if (showLink) {
+      loginContainer.current.style.height = "auto";
+      loginContainer.current.style["margin-bottom"] = "16px";
+    } else {
+      loginContainer.current.style.height = "0px";
+      loginContainer.current.style["margin-bottom"] = "0px";
+    }
+  }, [showLink]);
+
+  const processLogin = () => {
+    setUser(currentUser);
+  };
 
   return (
-    <div className="security">
+    <div className="security" ref={loginContainer}>
       <a href="#" onClick={processLogin}>
         <RiLoginCircleLine />
         <span>
-          {
-            lang === "En"? "Login":
-            lang === "Ru"? "Вход":
-            lang === "Kz"? "Кіру": "Кirish"
-          }
-          
-          
-          </span>
+          {lang === "En"
+            ? "Login"
+            : lang === "Ru"
+            ? "Вход"
+            : lang === "Kz"
+            ? "Кіру"
+            : "Кirish"}
+        </span>
       </a>
     </div>
   );

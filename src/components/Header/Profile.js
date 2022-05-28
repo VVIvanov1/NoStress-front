@@ -1,8 +1,10 @@
 import React from "react";
 
-const Profile = () => {
+const Profile = ({ position }) => {
+  const style = { top: position };
+
   return (
-    <div className="profile">
+    <div className="profile" style={style}>
       <ul>
         <li>
           <a href="#">
