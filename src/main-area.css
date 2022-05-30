@@ -1,0 +1,144 @@
+.main-workarea {
+  display: flex;
+  flex-direction: row;
+}
+
+
+
+.left-side {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.right-side {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.left-side-info-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 13px;
+  gap: 3px;
+  background: rgba(230, 106, 225, 0.17);
+  box-shadow: 2px 4px 4px rgba(148, 147, 147, 0.25);
+  border-radius: 8px;
+}
+.heading-info-panel {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 10px 10px 10px 16px;
+  gap: 32px;
+  flex: none;
+  order: 0;
+  align-self: stretch;
+  flex-grow: 0;
+}
+.heading-info-panel h4 {
+  width: 101px;
+  height: 15px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 600;
+  font-size: 13px;
+  line-height: 15px;
+  color: #4f4f4f;
+}
+.heading-info-panel svg {
+  width: 20px;
+  height: 20px;
+  color: #bdbdbd;
+}
+.info-row {
+  background: transparent;
+  border: none;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+  width: -webkit-fill-available;
+}
+.info-row p {
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 15px;
+  color: #828282;
+  flex-shrink: 0;
+}
+.info-row span {
+  font-size: 16px;
+  line-height: 19px;
+  font-weight: 600;
+}
+.main-theme-color {
+  color: #00b0c7;
+}
+.red-theme-color {
+  color: #d73535;
+}
+.green-theme-color {
+  color: #219653;
+}
+.blue-theme-color {
+  color: #2f80ed;
+}
+.right-side-buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 19px 0px 12px;
+    gap: 33px;
+}
+.filter-buttons-section{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+.right-side-button-ico{
+    cursor: pointer;
+    color: #00B0C7;
+    border: none;
+    background: transparent;
+}
+.right-side-button-ico svg{
+    width: 30px;
+    height: 30px;
+}
+.right-side-nav-btn{
+    cursor: pointer;
+    padding: 6px 24px;
+    background: #e66ae1;
+    border: 1px solid #e66ae1;
+    color: #ffffff;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+}
+.right-side-nav-btn:hover{
+    color: #e66ae1;
+    background: #fff;
+}
+.btn-active{
+    color: #e66ae1;
+    background: #fff;
+}
+
+@media screen and (max-width: 800px) {
+    .heading-info-panel{
+        gap: 0;
+    }
+    .main-workarea {
+      flex-direction: column;
+    }
+    .left-side-info-panel {
+      flex-direction: row;
+    }
+    .info-row {
+      flex-direction: column;
+    }
+  }
