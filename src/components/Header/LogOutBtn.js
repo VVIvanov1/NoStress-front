@@ -1,7 +1,9 @@
 import React, { useRef, useEffect } from "react";
 import { RiLogoutCircleLine } from "react-icons/ri";
+import { useGlobalContext } from "../../context";
 
-const LogOutBtn = ({ setUser, lang, showLink }) => {
+const LogOutBtn = () => {
+  const { setUser, lang, showLink } = useGlobalContext();
   const logoutContainer = useRef(null);
 
   useEffect(() => {

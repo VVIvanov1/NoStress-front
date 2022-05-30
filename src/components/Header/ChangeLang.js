@@ -1,15 +1,23 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
+import { useGlobalContext } from "../../context";
 
-const ChangeLang = ({ lang, setLang, showLink }) => {
-  const langs = ["Kz", "Ru", "En", "Uz"];
-  const activeLangStyle = { background: "#00b0c7" };
+const ChangeLang = () => {
+  const {
+    langs,
+    activeLangStyle,
+    lang,
+    setLang,
+    showLink,
+  } = useGlobalContext();
+  // const langs = ["Kz", "Ru", "En", "Uz"];
+  // const activeLangStyle = { background: "#00b0c7" };
 
   const langContainerRef = useRef(null);
   const linksRef = useRef(null);
 
   useEffect(() => {
-    let linkHeight = linksRef.current.getBoundingClientRect().height;
-    console.log(linkHeight);
+    // let linkHeight = linksRef.current.getBoundingClientRect().height;
+
     if (showLink) {
       langContainerRef.current.style.height = "auto";
     } else {

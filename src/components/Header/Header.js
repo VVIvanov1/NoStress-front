@@ -5,12 +5,14 @@ import LoginBtn from "./LoginBtn";
 import LogOutBtn from "./LogOutBtn";
 import ChangeLang from "./ChangeLang";
 import logo from "./logo.svg";
+import { useGlobalContext } from "../../context";
 
 const Header = () => {
-  let currentUser = { email: "meruyert@baigroupkz.com" };
-  const [user, setUser] = useState(null);
-  const [lang, setLang] = useState("Ru");
-  const [showLink, setShowLinks] = useState(false);
+  const { user, showLink, setShowLinks } = useGlobalContext();
+  // let currentUser = { email: "meruyert@baigroupkz.com" };
+  // const [user, setUser] = useState(null);
+  // const [lang, setLang] = useState("Ru");
+  // const [showLink, setShowLinks] = useState(false);
 
   return (
     <header>
@@ -25,14 +27,10 @@ const Header = () => {
           <FaBars />
         </button>
       </div>
-      <ChangeLang lang={lang} setLang={setLang} showLink={showLink} />
+      <ChangeLang />
 
-      {user && <Account user={currentUser} showLink={showLink} />}
-      {!user ? (
-        <LoginBtn setUser={setUser} lang={lang} showLink={showLink} />
-      ) : (
-        <LogOutBtn setUser={setUser} lang={lang} showLink={showLink} />
-      )}
+      {user && <Account />}
+      {!user ? <LoginBtn /> : <LogOutBtn />}
     </header>
   );
 };

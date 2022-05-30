@@ -1,9 +1,10 @@
 import React, { useRef, useEffect } from "react";
 import { RiLoginCircleLine } from "react-icons/ri";
-// import { useEffect } from "react";
+import { useGlobalContext } from "../../context";
 
-const LoginBtn = ({ setUser, lang, showLink }) => {
-  const currentUser = { email: "meruyert@baigroupkz.com" };
+const LoginBtn = () => {
+  const { currentUser, setUser, lang, showLink } = useGlobalContext();
+  // const currentUser = { email: "meruyert@baigroupkz.com" };
   const loginContainer = useRef(null);
 
   useEffect(() => {
