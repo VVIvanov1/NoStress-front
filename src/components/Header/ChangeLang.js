@@ -9,15 +9,11 @@ const ChangeLang = () => {
     setLang,
     showLink,
   } = useGlobalContext();
-  // const langs = ["Kz", "Ru", "En", "Uz"];
-  // const activeLangStyle = { background: "#00b0c7" };
 
   const langContainerRef = useRef(null);
   const linksRef = useRef(null);
 
   useEffect(() => {
-    // let linkHeight = linksRef.current.getBoundingClientRect().height;
-
     if (showLink) {
       langContainerRef.current.style.height = "auto";
     } else {

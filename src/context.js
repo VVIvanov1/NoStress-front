@@ -10,6 +10,8 @@ const AppProvider = ({ children }) => {
   const [showLink, setShowLinks] = useState(false);
   const [expand, setExpand] = useState(false);
   const [user, setUser] = useState(null);
+  const [newOrders, setNewOrders] = useState(false);
+  const [notAssigned, setNotAssigned] = useState(false);
   const myProfile = {
     myCurrentOrders: 17,
     myClosedOrders: 154,
@@ -17,6 +19,10 @@ const AppProvider = ({ children }) => {
   return (
     <AppContext.Provider
       value={{
+        notAssigned,
+        setNotAssigned,
+        newOrders,
+        setNewOrders,
         user,
         lang,
         langs,

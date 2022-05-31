@@ -4,7 +4,7 @@ import { useGlobalContext } from "../../context";
 
 const LoginBtn = () => {
   const { currentUser, setUser, lang, showLink } = useGlobalContext();
-  // const currentUser = { email: "meruyert@baigroupkz.com" };
+
   const loginContainer = useRef(null);
 
   useEffect(() => {
