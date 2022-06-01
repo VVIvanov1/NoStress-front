@@ -12,6 +12,8 @@ const AppProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [newOrders, setNewOrders] = useState(false);
   const [notAssigned, setNotAssigned] = useState(false);
+  const [showShareModal, setShowShareModal] = useState(true);
+  const [sharedUser, setSharedUser] = useState("");
   const myProfile = {
     myCurrentOrders: 17,
     myClosedOrders: 154,
@@ -19,6 +21,10 @@ const AppProvider = ({ children }) => {
   return (
     <AppContext.Provider
       value={{
+        showShareModal,
+        setShowShareModal,
+        sharedUser,
+        setSharedUser,
         notAssigned,
         setNotAssigned,
         newOrders,

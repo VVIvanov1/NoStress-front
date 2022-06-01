@@ -23,10 +23,12 @@ const NewOrderCard = (obj) => {
     won,
     comments,
     createdAt,
+    showShareModal,
+    setShowShareModal,
   } = obj.item;
 
+  // calculate position of dropdown
   let date = new Date(Number(createdAt.$date.$numberLong));
-
   let diff = new Date() - date;
   let days = Math.floor(diff / 86400000);
   let hours = Math.floor((diff - days * 86400000) / 3600000);
@@ -65,10 +67,11 @@ const NewOrderCard = (obj) => {
           Since creation: {days} d. {hours} h.
         </div>
         <div className="order-card-manager-row">
-          <ShareButton />
-          {/* <button className="share-order manager-btn">
-            <FaShareSquare /> Share
-          </button> */}
+          <ShareButton
+            showShareModal={showShareModal}
+            setShowShareModal={setShowShareModal}
+          />
+
           <button
             className={`${
               days > 0
