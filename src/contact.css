@@ -1,0 +1,20 @@
+.contact-versions-container {
+  display: flex;
+  position: absolute;
+  background: #fff;
+  border-radius: 6px;
+  box-shadow: 0px 4px 4px rgb(0 0 0 / 25%);
+  padding: 10px;
+  cursor: pointer;
+}
+.contact-versions-container svg {
+  width: 25px;
+  height: 25px;
+}
+.contact-versions-container a {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+.phone {
+  cursor: pointer;
+}

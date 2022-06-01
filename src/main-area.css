@@ -111,12 +111,13 @@
   background: transparent;
 }
 .right-side-button-ico svg {
-  width: 30px;
-  height: 30px;
+  width: 20px;
+  height: 20px;
 }
 .right-side-nav-btn {
   cursor: pointer;
-  padding: 6px 6px;
+  padding: 6px 10px;
+  flex-shrink: 0;
   background: #e66ae1;
   border: 1px solid #e66ae1;
   color: #ffffff;

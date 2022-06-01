@@ -4,25 +4,39 @@ import { FaTimes } from "react-icons/fa";
 import { useGlobalContext } from "../../context";
 
 const ShareModal = () => {
-  const { sharedUser, showShareModal, setShowShareModal } = useGlobalContext();
-
+  const {
+    sharedUser,
+    setSharedUser,
+    showShareModal,
+    setShowShareModal,
+    sharedPage,
+    setSharedPage,
+    data,
+  } = useGlobalContext();
+  const handleShare = () => {
+    data.map((order) => {
+      if (order._id.$oid === sharedPage.id) {
+        order.status = "in progress";
+      }
+    });
+    setShowShareModal(!showShareModal);
+    setSharedUser({});
+    setSharedPage({});
+  };
+  const handleClose = () => {
+    setShowShareModal(!showShareModal);
+    setSharedUser({});
+  };
   return (
-    <div
-      className="modal-overlay"
-      onClick={() => setShowShareModal(!showShareModal)}
-    >
+    <div className="modal-overlay" onClick={handleClose}>
       <div className="modal-container">
-        <h4>Confirm sharing this order with {sharedUser}?</h4>
-        <button
-          className="confirm-modal-btn"
-          onClick={() => setShowShareModal(!showShareModal)}
-        >
+        <h4>
+          Confirm sharing order "{sharedPage.page}" with {sharedUser}?
+        </h4>
+        <button className="confirm-modal-btn" onClick={handleShare}>
           confirm
         </button>
-        <button
-          className="close-modal-btn"
-          onClick={() => setShowShareModal(!showShareModal)}
-        >
+        <button className="close-modal-btn" onClick={handleClose}>
           <FaTimes></FaTimes>
         </button>
       </div>

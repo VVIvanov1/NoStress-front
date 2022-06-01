@@ -1,16 +1,10 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import Profile from "./Profile";
 import { useGlobalContext } from "../../context";
 
-// const myProfile = {
-//   myCurrentOrders: 17,
-//   myClosedOrders: 154,
-// };
-
 const Account = () => {
   const { user, showLink, expand, setExpand } = useGlobalContext();
-  // const [expand, setExpand] = useState(false);
-  // const [pose, setPose] = useState(0);
+
   const accountHeight = useRef(null);
 
   useEffect(() => {

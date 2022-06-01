@@ -1,13 +1,12 @@
 import React from "react";
-// import { GrMapLocation } from "react-icons/gr";
 import ShareButton from "../ShareButton";
 import { BsGeoAlt } from "react-icons/bs";
+import PhoneCallComponent from "./PhoneCallComponent";
 import {
   FaRegUserCircle,
   FaBookmark,
   FaCalendarCheck,
-  FaPhoneAlt,
-  //   FaShareSquare,
+  // FaPhoneAlt,
 } from "react-icons/fa";
 import { ImCoinDollar } from "react-icons/im";
 
@@ -43,10 +42,8 @@ const NewOrderCard = (obj) => {
           <FaRegUserCircle />
           {name}
         </div>
-        <div className="order-card-row-item phone main-theme-color">
-          <FaPhoneAlt className="main-theme-color" />
-          {phone}
-        </div>
+        <PhoneCallComponent phone={phone} />
+
         <div className="order-card-row-item label main-theme-color">
           {status}
           <FaBookmark className="main-theme-color" />
@@ -70,6 +67,8 @@ const NewOrderCard = (obj) => {
           <ShareButton
             showShareModal={showShareModal}
             setShowShareModal={setShowShareModal}
+            id={_id.$oid}
+            page={page}
           />
 
           <button

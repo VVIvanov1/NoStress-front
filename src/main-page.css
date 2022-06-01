@@ -21,6 +21,8 @@
   flex-direction: row;
   justify-content: space-between;
   margin: 10px 0px 10px 0px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 .order-card-row-item {
   display: flex;
@@ -33,10 +35,10 @@
   padding-right: 10px;
 }
 .location {
-  padding-left: 10px;
+  padding-left: 0px;
 }
 .calendar {
-  padding-left: 10px;
+  padding-left: 0px;
 }
 .user svg {
   width: 20px;
@@ -75,13 +77,15 @@
   border-radius: 5px;
   padding: 3px 12px;
 }
+.team-dropdown * {
+  height: auto;
+}
 .team-dropdown {
   padding-top: 5px;
   position: absolute;
   background: #fff;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 6px;
-  /* transition: all 1s ease-in; */
 }
 .team-dropdown ul {
   list-style: none;
@@ -100,10 +104,6 @@
   margin-bottom: 10px;
   padding: 5px 12px 5px 12px;
   font-weight: 600;
-  /* padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 12px;
-  padding-right: 12px; */
 }
 .team-dropdown ul li:hover {
   background: rgba(0, 0, 0, 0.15);
@@ -111,4 +111,14 @@
 .team-dropdown ul li img {
   width: 35px;
   border-radius: 50%;
+}
+@media screen and (max-width: 700px) {
+  .order-card-row-item,
+  .order-card-manager-row {
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+  .order-card-row {
+    flex-wrap: wrap;
+  }
 }

@@ -3,14 +3,18 @@ import team from "../../team";
 import { FaShareSquare } from "react-icons/fa";
 import { useGlobalContext } from "../../context.js";
 
-const ShareButton = () => {
-  const { showShareModal, setShowShareModal } = useGlobalContext();
+const ShareButton = ({ id, page }) => {
+  const {
+    showShareModal,
+    setShowShareModal,
+    setSharedPage,
+  } = useGlobalContext();
   const { setSharedUser } = useGlobalContext();
   const [hoverIn, setHoverIn] = useState(false);
   const [position, setPosition] = useState(null);
   const shareBtnRef = useRef(null);
 
-  const handleHover = (e) => {
+  const handleHover = () => {
     setHoverIn(!hoverIn);
     let rect = shareBtnRef.current.getBoundingClientRect();
     let center = rect.left - rect.width / 2;
@@ -19,9 +23,11 @@ const ShareButton = () => {
     setPosition(styleDD);
   };
   const handleSelection = (e) => {
+    const userId = team.find((u) => u.name === e.target.textContent);
     setSharedUser(e.target.textContent);
     setHoverIn(!hoverIn);
     setShowShareModal(!showShareModal);
+    setSharedPage({ id, page, userId });
   };
 
   return (

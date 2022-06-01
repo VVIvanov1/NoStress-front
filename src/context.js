@@ -1,18 +1,19 @@
 import React, { useState, useContext } from "react";
-
+import data from "./orders-data";
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
   const [lang, setLang] = useState("Ru");
   const currentUser = { email: "meruyert@baigroupkz.com" };
   const activeLangStyle = { background: "#00b0c7" };
-  const langs = ["Kz", "Ru", "En", "Uz"];
+  const langs = ["Kz", "Ru", "En"];
   const [showLink, setShowLinks] = useState(false);
   const [expand, setExpand] = useState(false);
   const [user, setUser] = useState(null);
   const [newOrders, setNewOrders] = useState(false);
   const [notAssigned, setNotAssigned] = useState(false);
-  const [showShareModal, setShowShareModal] = useState(true);
+  const [showShareModal, setShowShareModal] = useState(false);
+  const [sharedPage, setSharedPage] = useState({});
   const [sharedUser, setSharedUser] = useState("");
   const myProfile = {
     myCurrentOrders: 17,
@@ -21,6 +22,9 @@ const AppProvider = ({ children }) => {
   return (
     <AppContext.Provider
       value={{
+        data,
+        sharedPage,
+        setSharedPage,
         showShareModal,
         setShowShareModal,
         sharedUser,
