@@ -184,8 +184,6 @@ header {
   display: flex;
   flex-direction: row;
   align-items: baseline;
-  /* padding: 8px 16px; */
-  /* margin-bottom: 16px; */
   gap: 7px;
   background: #ffffff;
   border-radius: 8px;

@@ -1,0 +1,105 @@
+.main-page-container {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.order-card {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border-radius: 10px;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  padding: 10px 5px;
+  gap: 10px;
+}
+.order-card-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10px 0px 10px 0px;
+}
+.order-card-row-item {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex-basis: 175px;
+}
+.label {
+  flex-basis: 50px;
+  padding-right: 10px;
+}
+.location {
+  padding-left: 10px;
+}
+.calendar {
+  padding-left: 10px;
+}
+.user svg {
+  width: 20px;
+  height: 20px;
+}
+.order-card-manager-row {
+  display: flex;
+  gap: 20px;
+  padding-right: 10px;
+}
+.manager-btn {
+  display: flex;
+  gap: 15px;
+  background: #ffffff;
+  cursor: pointer;
+  align-items: center;
+}
+.share-order {
+  border: none;
+  color: #828282;
+}
+.timelapse {
+  font-size: 12px;
+}
+.color-red {
+  color: #d73535;
+}
+.color-grey {
+  color: #828282;
+}
+.main-theme-color {
+  color: #00b0c7;
+}
+.take-order {
+  border: 1px solid;
+  border-radius: 5px;
+  padding: 3px 12px;
+}
+.team-dropdown {
+  position: absolute;
+  background: #fff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  /* transition: all 1s ease-in; */
+}
+.team-dropdown ul {
+  list-style: none;
+  grid-gap: 10px;
+  gap: 10px;
+  padding: 0px 10px 0px 10px;
+  margin: 0;
+  cursor: pointer;
+}
+
+.team-dropdown ul li {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+  align-items: center;
+  margin-bottom: 10px;
+  padding-left: 12px;
+  padding-right: 12px;
+}
+.team-dropdown ul li img {
+  width: 35px;
+  border-radius: 50%;
+}
