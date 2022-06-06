@@ -6,6 +6,7 @@ import {
   FaRegUserCircle,
   FaBookmark,
   FaCalendarCheck,
+
   // FaPhoneAlt,
 } from "react-icons/fa";
 import { ImCoinDollar } from "react-icons/im";
@@ -33,7 +34,7 @@ const NewOrderCard = (obj) => {
   let hours = Math.floor((diff - days * 86400000) / 3600000);
 
   return (
-    <div className="order-card">
+    <div className="order-card" draggable="true">
       <div className="order-card-row">
         <div className="order-card-row-item location main-theme-color">
           <BsGeoAlt className="main-theme-color" /> {page}

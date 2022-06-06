@@ -1,0 +1,92 @@
+.new-order-container {
+  margin-top: 30px;
+  border-radius: 9px;
+  -webkit-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  -moz-box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  box-shadow: 4px 4px 8px 0px rgba(34, 60, 80, 0.2);
+  /* margin: 0 auto; */
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.new-order-container h2 {
+  padding-left: 20px;
+  color: #4f4f4f;
+}
+.new-order-form {
+  padding: 20px;
+  display: grid;
+  gap: 10px;
+  grid-template-areas:
+    "name"
+    "phone"
+    "destination"
+    "comment"
+    "save";
+}
+
+.name-item {
+  grid-area: name;
+  /* width: max-content; */
+}
+.phone-item {
+  grid-area: phone;
+  width: max-content;
+}
+.destination-item {
+  grid-area: destination;
+}
+.comment-item {
+  grid-area: comment;
+}
+.save-btn {
+  grid-area: save;
+  /* width: fit-content; */
+  min-width: 90px;
+  margin-left: auto;
+}
+.close-btn {
+  grid-area: close;
+}
+
+.new-order-form input {
+  width: -webkit-fill-available;
+  padding: 7px;
+  border-radius: 5px;
+  border: 1px solid #bdbdbd;
+  margin-top: 10px;
+}
+
+.form-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.form-close-cross {
+  font-size: 1.2rem;
+  padding-right: 10px;
+  color: #4f4f4f;
+  cursor: pointer;
+}
+.save-btn {
+  color: #fff;
+  background: #e66ae1;
+  border: 1px solid #e66ae1;
+  cursor: pointer;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 14px;
+}
+.save-btn:hover {
+  color: #e66ae1;
+  background: #fff;
+}
+@media (min-width: 600px) {
+  .new-order-form {
+    grid-template-areas:
+      "name phone"
+      "destination destination"
+      "comment comment"
+      ". save";
+  }
+}

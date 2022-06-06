@@ -8,7 +8,6 @@ const PhoneCallComponent = ({ phone }) => {
   const contactDeviceRef = useRef(null);
 
   useEffect(() => {
-    console.log(device);
     let rect = contactDeviceRef.current.getBoundingClientRect();
     setPositionContact({
       left: rect.left + rect.width / 2 - 60,

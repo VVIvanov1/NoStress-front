@@ -1,6 +1,7 @@
 .main-workarea {
   display: flex;
   flex-direction: row;
+  /* margin-top: 90px; */
 }
 
 .left-side {
@@ -86,7 +87,7 @@
 .blue-theme-color {
   color: #2f80ed;
 }
-.right-side-buttons {
+/* .right-side-buttons {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -175,7 +176,7 @@ a {
 .buttons-right-side-nav {
   display: flex;
   gap: 20px;
-}
+} */
 @media screen and (max-width: 900px) {
   .heading-info-panel {
     gap: 0;

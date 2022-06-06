@@ -3,7 +3,9 @@ import data from "./orders-data";
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
-  const [lang, setLang] = useState("Ru");
+  const [lang, setLang] = useState(
+    window.localStorage.getItem("language") || "Ru"
+  );
   const currentUser = { email: "meruyert@baigroupkz.com" };
   const activeLangStyle = { background: "#00b0c7" };
   const langs = ["Kz", "Ru", "En"];
@@ -15,6 +17,7 @@ const AppProvider = ({ children }) => {
   const [showShareModal, setShowShareModal] = useState(false);
   const [sharedPage, setSharedPage] = useState({});
   const [sharedUser, setSharedUser] = useState("");
+  const [showTooltip, setShowTooltip] = useState(false);
   const myProfile = {
     myCurrentOrders: 17,
     myClosedOrders: 154,
@@ -22,6 +25,8 @@ const AppProvider = ({ children }) => {
   return (
     <AppContext.Provider
       value={{
+        showTooltip,
+        setShowTooltip,
         data,
         sharedPage,
         setSharedPage,

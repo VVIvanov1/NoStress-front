@@ -1,0 +1,104 @@
+.my-orders-container {
+  display: grid;
+}
+.my-order-card {
+  display: grid;
+  grid-template-areas:
+    "top right"
+    "bottom right"
+    "comments comments";
+  grid-template-columns: 4fr 1fr;
+  gap: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background: #ffffff;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 8px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.my-order-card__comments {
+  grid-area: comments;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
+  grid-template-areas: "comment button";
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.edit-comments-btn {
+  grid-area: button;
+}
+.row-item-right {
+  grid-area: right;
+  display: grid;
+  grid-gap: 10px;
+  gap: 10px;
+  grid-template-areas:
+    "topstat topstat"
+    "share close";
+  padding-right: 10px;
+}
+.my-order-card__top {
+  display: grid;
+  grid-area: top;
+  grid-template-areas: "top top top";
+}
+.my-order-card__bottom {
+  grid-area: bottom;
+  display: grid;
+  grid-template-areas: "bottom bottom bottom";
+}
+
+.row-item {
+  display: flex;
+  gap: 10px;
+  padding: 9px;
+  align-items: center;
+}
+.comments-btn {
+  border: none;
+  background: #fff;
+  cursor: pointer;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.comments-btn svg {
+  width: 20px;
+  height: 20px;
+}
+.my-order-close-btn {
+  background: #fff;
+  cursor: pointer;
+  width: min-content;
+  grid-area: close;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: none;
+  display: flex;
+  gap: 10px;
+}
+.top-status {
+  grid-area: topstat;
+  justify-content: flex-end;
+}
+.my-order-share-btn {
+  grid-area: share;
+  background: #fff;
+  cursor: pointer;
+  width: min-content;
+  border: none;
+  display: flex;
+  gap: 10px;
+}
+.edit-comments-buttons {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.edit-comment-btn {
+  cursor: pointer;
+}
+.save-comment-btn {
+  cursor: pointer;
+}
