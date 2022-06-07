@@ -163,10 +163,10 @@
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  gap: 6px;
 }
-.edit-comment-btn {
-  cursor: pointer;
-}
+.edit-comment-btn,
 .save-comment-btn {
   cursor: pointer;
+  display: flex;
 }

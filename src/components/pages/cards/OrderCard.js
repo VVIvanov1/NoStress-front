@@ -15,9 +15,6 @@ import {
   FaEdit,
   FaRegSave,
   FaFireAlt,
-  //   FaCommentSlash,
-  // FaShare,
-  // FaSave,
 } from "react-icons/fa";
 import { ImCoinDollar } from "react-icons/im";
 import { BsGeoAlt } from "react-icons/bs";
@@ -40,6 +37,7 @@ const OrderCard = ({
     setShowTooltip,
     showShareModal,
     setShowShareModal,
+    lang,
   } = useGlobalContext();
   const [showComments, setShowComments] = useState(false);
   const [toggleComments, setToggleComments] = useState(false);
@@ -47,10 +45,7 @@ const OrderCard = ({
   const [ttpos, setTtpos] = useState();
 
   const dateInfo = useDateNormaliser(createdAt.$date.$numberLong);
-  // console.log(dateInfo);
-  // const d = new Date(Number(createdAt.$date.$numberLong));
-  // const nowDate = new Date();
-  // console.log(nowDate - d);
+
   let commentsText = comments.join("\n");
 
   const handleShowComments = () => {
@@ -83,7 +78,16 @@ const OrderCard = ({
           <BsGeoAlt />
           {page}
           {showTooltip && tooltipId === "geo" ? (
-            <Tooltip text="Tour or destination for this order" {...ttpos} />
+            <Tooltip
+              text={
+                lang === "En"
+                  ? "Tour or destination for this order"
+                  : lang === "Ru"
+                  ? "Тур/направление данного заказа"
+                  : "Осы тапсырыс үшін тур немесе баратын жер"
+              }
+              {...ttpos}
+            />
           ) : null}
         </div>
         <div
@@ -95,15 +99,6 @@ const OrderCard = ({
           {name}
         </div>
         <PhoneCallComponent className="row-item phone" phone={phone} />
-        {/* <div
-          className="row-item phone"
-          // id="phone"
-          onMouseOver={(e) => toggleTooltip(e)}
-          onMouseLeave={hideTooltip}
-        >
-          <FaPhone />
-          {phone}
-        </div> */}
       </div>
       <div className="row-item-right">
         <div className="row-item top-status">
@@ -120,9 +115,7 @@ const OrderCard = ({
           id={_id.$oid}
           page={page}
         />
-        {/* <button className="my-order-share-btn">
-          <FaShare /> Share
-        </button> */}
+
         <button className="my-order-close-btn">
           <ImCoinDollar />
           Close
@@ -140,13 +133,24 @@ const OrderCard = ({
           {/* {const d = new Date(createdAt.$date.$numberLong)} */}
         </div>
         <div className="row-item">
-          Since creation: {dateInfo.days} d. {dateInfo.hours} h.
+          {lang === "En"
+            ? "Since creation:"
+            : lang === "Ru"
+            ? "Заказ создан:"
+            : "Тапсырыс жасалды"}{" "}
+          {dateInfo.days} {lang === "En" ? "d." : lang === "Ru" ? "дн." : "к."}{" "}
+          {dateInfo.hours} {lang === "En" ? "h" : lang === "Ru" ? "ч" : "с."}
           {/* <Tooltip text="Lifetime of this order" /> */}
         </div>
         <div className="row-item">
           <button className="comments-btn" onClick={handleShowComments}>
             <FaComments />
-            {comments.length} Comments
+            {comments.length}{" "}
+            {lang === "En"
+              ? "Comments"
+              : lang === "Ru"
+              ? "Комментарии"
+              : "Түсініктемелер"}
           </button>
         </div>
       </div>
@@ -164,10 +168,12 @@ const OrderCard = ({
               onClick={() => setToggleComments(!toggleComments)}
               className="edit-comment-btn"
             >
-              <FaEdit /> Edit
+              <FaEdit />{" "}
+              {lang === "En" ? "Edit" : lang === "Ru" ? "Править" : "өңдеу"}
             </button>
             <button className="save-comment-btn">
-              <FaRegSave /> Save
+              <FaRegSave />{" "}
+              {lang === "En" ? "Save" : lang === "Ru" ? "Сохранить" : "жинау"}
             </button>
           </div>
         </div>

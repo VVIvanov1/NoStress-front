@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from "react";
 import { useGlobalContext } from "../../context";
 import { FcGlobe } from "react-icons/fc";
+import useDeviceDetect from "../../hooks/useDeviceDetect";
 
 const ChangeLang = () => {
   const {
@@ -9,6 +10,7 @@ const ChangeLang = () => {
     lang,
     setLang,
     showLink,
+    setShowLinks,
   } = useGlobalContext();
 
   function setGlobalLang(language) {
@@ -20,17 +22,25 @@ const ChangeLang = () => {
   const globeRef = useRef(null);
   const linksRef = useRef(null);
   const [showLangs, setShowLangs] = useState(false);
-  useEffect(() => {
-    let globeLeft = globeRef.current.getBoundingClientRect().left;
-    let globeSize = globeRef.current.getBoundingClientRect().width;
+  const [langLinksPosition, setLangLinksPosition] = useState();
+  const isMobile = useDeviceDetect();
 
-    if (showLink) {
-      linksRef.current.style.left = `${globeLeft + globeSize + 10}px`;
-      langContainerRef.current.style.height = "auto";
-    } else {
-      langContainerRef.current.style.height = "0px";
+  useEffect(() => {
+    let leftGlobe = globeRef.current.getBoundingClientRect().left + 50;
+    setLangLinksPosition({ top: "0px", left: `${leftGlobe}px` });
+  }, []);
+
+  useEffect(() => {
+    let leftGlobe = globeRef.current.getBoundingClientRect().left + 50;
+    function setLangsPositionOnScreen() {
+      setLangLinksPosition({ top: "0px", left: `${leftGlobe}px`, margin: 0 });
     }
-  }, [showLink, lang]);
+    window.addEventListener("resize", setLangsPositionOnScreen);
+    return () => {
+      window.removeEventListener("resize", setLangsPositionOnScreen);
+    };
+  });
+
   const handleShowLangs = () => {
     setShowLangs(true);
   };
@@ -45,6 +55,7 @@ const ChangeLang = () => {
       className="change-lang"
       ref={langContainerRef}
       onMouseLeave={handleHideLangs}
+      style={!showLink && isMobile ? { height: "0px" } : { height: "auto" }}
     >
       <button
         className="globe"
@@ -58,6 +69,7 @@ const ChangeLang = () => {
 
       <ul
         ref={linksRef}
+        style={langLinksPosition}
         className={showLangs ? "lang-container" : "lang-container hidden"}
       >
         {langs.map((lan) => {
