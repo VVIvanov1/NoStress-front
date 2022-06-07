@@ -27,7 +27,6 @@ const NewOrderCard = (obj) => {
     setShowShareModal,
   } = obj.item;
 
-  // calculate position of dropdown
   let date = new Date(Number(createdAt.$date.$numberLong));
   let diff = new Date() - date;
   let days = Math.floor(diff / 86400000);

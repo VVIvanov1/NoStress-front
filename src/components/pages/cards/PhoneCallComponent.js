@@ -10,13 +10,28 @@ const PhoneCallComponent = ({ phone }) => {
   useEffect(() => {
     let rect = contactDeviceRef.current.getBoundingClientRect();
     setPositionContact({
-      left: rect.left + rect.width / 2 - 60,
-      top: rect.bottom + 3,
+      left: `${rect.left + rect.width / 2 - 60}px`,
+      top: `${rect.bottom + 3}px`,
     });
   }, []);
+  useEffect(() => {
+    let rect = contactDeviceRef.current.getBoundingClientRect();
+    function handleResize() {
+      setPositionContact({
+        left: `${rect.left + rect.width / 2 - 60}px`,
+        top: `${rect.bottom + 3}px`,
+      });
+    }
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  });
 
   const handleActivationCall = () => {
     setExpandContact(!expandContact);
+    console.log(positionContact);
     if (window.innerWidth > 900) {
       setDevice("desktop");
     } else {

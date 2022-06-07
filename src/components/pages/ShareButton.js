@@ -8,8 +8,9 @@ const ShareButton = ({ id, page }) => {
     showShareModal,
     setShowShareModal,
     setSharedPage,
+    setSharedUser,
   } = useGlobalContext();
-  const { setSharedUser } = useGlobalContext();
+  // const { setSharedUser } = useGlobalContext();
   const [hoverIn, setHoverIn] = useState(false);
   const [position, setPosition] = useState(null);
   const shareBtnRef = useRef(null);
@@ -23,6 +24,7 @@ const ShareButton = ({ id, page }) => {
     setPosition(styleDD);
   };
   const handleSelection = (e) => {
+    console.log("selected assignee");
     const userId = team.find((u) => u.name === e.target.textContent);
     setSharedUser(e.target.textContent);
     setHoverIn(!hoverIn);
