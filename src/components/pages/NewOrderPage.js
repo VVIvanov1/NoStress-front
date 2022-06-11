@@ -2,7 +2,9 @@ import React, { useState } from "react";
 import "../../newOrder.css";
 import { FaTimes } from "react-icons/fa";
 import { useGlobalContext } from "../../context";
+import { useNavigate } from "react-router-dom";
 const NewOrderPage = () => {
+  const navigate = useNavigate();
   // const lang = window.localStorage.getItem("language");
   const { lang } = useGlobalContext();
   const initialState = {
@@ -26,7 +28,8 @@ const NewOrderPage = () => {
     e.preventDefault();
     console.log("CLOSE");
     setFormData(initialState);
-    window.location.href = "/myorders";
+    navigate("/myorders");
+    // window.location.href = "/myorders";
   };
   return (
     <div className="new-order-container">
