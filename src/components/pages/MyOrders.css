@@ -28,30 +28,46 @@
 }
 
 .my-order-card__comments {
+  margin: 10px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  background: #e66ae12b;
+  border-radius: 5px;
   grid-area: comments;
   display: grid;
   gap: 20px;
-  grid-template-columns: 4fr 1fr;
-  /* grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); */
+  grid-template-columns: 5fr 1fr;
+  color: darkcyan;
   grid-template-areas: "comment button";
   padding-left: 10px;
   padding-right: 10px;
 }
 @media (max-width: 650px) {
   .my-order-card__comments {
-    grid-template-columns: 1fr;
+    grid-template-columns: 4fr;
     grid-template-areas:
       "comment"
       "button";
+    grid-auto-flow: row;
+    justify-items: flex-end;
   }
 }
-
+.comments-section {
+  width: -webkit-fill-available;
+}
 .edit-comments-btn {
   grid-area: button;
+  padding: 6px;
+  align-items: center;
 }
 
 .edit-comments-buttons {
   max-width: 280px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px 6px 12px;
 }
 .row-item-right {
   grid-area: right;
@@ -69,6 +85,15 @@
       "topstat"
       "share"
       "close";
+  }
+  .my-order-card__comments {
+    gap: 5px;
+  }
+  .new-comment-section {
+    width: -webkit-fill-available;
+  }
+  textarea {
+    width: -webkit-fill-available;
   }
 }
 .burning-order {
@@ -169,4 +194,24 @@
 .save-comment-btn {
   cursor: pointer;
   display: flex;
+  color: #fff;
+  background: #e66ae1;
+  border: 1px solid #e66ae1;
+  padding: 6px;
+  border-radius: 6px;
+  gap: 10px;
+  text-transform: capitalize;
+}
+textarea {
+  width: -webkit-fill-available;
+}
+
+.comment {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+  padding: 5px;
+}
+.comment * {
+  margin: 0;
 }

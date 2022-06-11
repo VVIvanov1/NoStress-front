@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useGlobalContext } from "../../../context";
 import Tooltip from "../../tooltip/TooltipCustom";
-// import { getElementPosition } from "../../tooltip/tooltipPosition";
+import Comments from "./commentsComponent/Comments";
 import useDateNormaliser from "../../../hooks/useDateNormaliser";
 import useTooltipPosition from "../../../hooks/useTooltipPosition";
 import ShareButton from "../ShareButton";
@@ -40,13 +40,13 @@ const OrderCard = ({
     lang,
   } = useGlobalContext();
   const [showComments, setShowComments] = useState(false);
-  const [toggleComments, setToggleComments] = useState(false);
+  // const [toggleComments, setToggleComments] = useState(false);
   const [tooltipId, setTooltipId] = useState("");
   const [ttpos, setTtpos] = useState();
 
   const dateInfo = useDateNormaliser(createdAt.$date.$numberLong);
 
-  let commentsText = comments.join("\n");
+  // let commentsText = comments.join("\n");
 
   const handleShowComments = () => {
     setShowComments(!showComments);
@@ -155,28 +155,7 @@ const OrderCard = ({
         </div>
       </div>
       {showComments ? (
-        <div className="my-order-card__comments">
-          <textarea
-            className="comments-section"
-            defaultValue={commentsText}
-            // cols={20}
-            disabled={!toggleComments ? true : false}
-            rows={3}
-          ></textarea>
-          <div className="edit-comments-buttons">
-            <button
-              onClick={() => setToggleComments(!toggleComments)}
-              className="edit-comment-btn"
-            >
-              <FaEdit />{" "}
-              {lang === "En" ? "Edit" : lang === "Ru" ? "Править" : "өңдеу"}
-            </button>
-            <button className="save-comment-btn">
-              <FaRegSave />{" "}
-              {lang === "En" ? "Save" : lang === "Ru" ? "Сохранить" : "жинау"}
-            </button>
-          </div>
-        </div>
+        <Comments id={_id} comments={comments} user={user} />
       ) : null}
     </div>
   );
