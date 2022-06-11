@@ -84,7 +84,14 @@ const RightSideButtons = () => {
         {/* <a href="/main" className="right-side-nav-btn btn-active">
           Main
         </a> */}
-        <a href="/myorders" className="right-side-nav-btn">
+        <a
+          href="/myorders"
+          className="right-side-nav-btn"
+          onClick={(e) => {
+            e.preventDefault();
+            navigate("/myorders");
+          }}
+        >
           {lang === "En"
             ? "My orders"
             : lang === "Ru"
