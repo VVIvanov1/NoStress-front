@@ -1,6 +1,7 @@
 .main-workarea {
   display: flex;
   flex-direction: row;
+  justify-content: center;
   /* margin-top: 90px; */
 }
 

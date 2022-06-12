@@ -18,6 +18,7 @@ const AppProvider = ({ children }) => {
   const [sharedPage, setSharedPage] = useState({});
   const [sharedUser, setSharedUser] = useState("");
   const [showTooltip, setShowTooltip] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
   const myProfile = {
     myCurrentOrders: 17,
     myClosedOrders: 154,
@@ -25,6 +26,8 @@ const AppProvider = ({ children }) => {
   return (
     <AppContext.Provider
       value={{
+        loggedIn,
+        setLoggedIn,
         showTooltip,
         setShowTooltip,
         data,

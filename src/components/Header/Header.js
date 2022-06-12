@@ -16,7 +16,7 @@ const Header = () => {
 
   return (
     <header>
-      <div className="left-header">
+      <nav className="left-header">
         <div className="logo-navbar">
           <a href="/" className="logo">
             <img src={logo} alt="logo" />
@@ -26,7 +26,7 @@ const Header = () => {
         <button className="nav-toggle" onClick={() => setShowLinks(!showLink)}>
           <FaBars />
         </button>
-      </div>
+      </nav>
       <ChangeLang />
 
       {user && <Account />}

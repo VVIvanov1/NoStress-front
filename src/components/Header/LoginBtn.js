@@ -1,10 +1,11 @@
 import React, { useRef, useEffect } from "react";
 import { RiLoginCircleLine } from "react-icons/ri";
 import { useGlobalContext } from "../../context";
+import { useNavigate } from "react-router-dom";
 
 const LoginBtn = () => {
   const { currentUser, setUser, lang, showLink } = useGlobalContext();
-
+  const navigate = useNavigate();
   const loginContainer = useRef(null);
 
   useEffect(() => {
@@ -18,7 +19,8 @@ const LoginBtn = () => {
   }, [showLink]);
 
   const processLogin = () => {
-    setUser(currentUser);
+    // setUser(currentUser);
+    navigate("/login");
   };
 
   return (
