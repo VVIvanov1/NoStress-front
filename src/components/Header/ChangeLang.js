@@ -2,8 +2,10 @@ import React, { useRef, useEffect, useState } from "react";
 import { useGlobalContext } from "../../context";
 import { FcGlobe } from "react-icons/fc";
 import useDeviceDetect from "../../hooks/useDeviceDetect";
+import useAuth from "../../hooks/useAuth";
 
 const ChangeLang = () => {
+  const { auth } = useAuth();
   const {
     langs,
     activeLangStyle,
@@ -28,7 +30,7 @@ const ChangeLang = () => {
   useEffect(() => {
     let leftGlobe = globeRef.current.getBoundingClientRect().left + 50;
     setLangLinksPosition({ top: "0px", left: `${leftGlobe}px` });
-  }, []);
+  }, [auth]);
 
   useEffect(() => {
     let leftGlobe = globeRef.current.getBoundingClientRect().left + 50;

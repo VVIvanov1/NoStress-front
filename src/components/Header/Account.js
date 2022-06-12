@@ -1,10 +1,11 @@
 import React, { useRef, useEffect } from "react";
 import Profile from "./Profile";
 import { useGlobalContext } from "../../context";
+import useAuth from "../../hooks/useAuth";
 
 const Account = () => {
-  const { user, showLink, expand, setExpand } = useGlobalContext();
-
+  const { showLink, expand, setExpand } = useGlobalContext();
+  const { auth } = useAuth();
   const accountHeight = useRef(null);
 
   useEffect(() => {
@@ -29,11 +30,15 @@ const Account = () => {
       onMouseEnter={() => expandProfile()}
       onMouseLeave={() => collapseProfile()}
     >
-      <div className="avatar">
-        <img src="avatar.jpg" alt="" />
-      </div>
-      <div className="email">{user.email}</div>
-
+      {" "}
+      {auth.name ? (
+        <>
+          <div className="avatar">
+            <img src={`${auth.name.toLowerCase()}.jpg`} alt="" />
+          </div>
+          <div className="email">{auth.email}</div>
+        </>
+      ) : null}
       {expand && (
         <Profile
           position={accountHeight.current.getBoundingClientRect().bottom}

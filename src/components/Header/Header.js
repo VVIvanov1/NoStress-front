@@ -6,14 +6,14 @@ import LogOutBtn from "./LogOutBtn";
 import ChangeLang from "./ChangeLang";
 import logo from "./logo.svg";
 import { useGlobalContext } from "../../context";
+import useAuth from "../../hooks/useAuth";
 
 const Header = () => {
-  const { user, showLink, setShowLinks } = useGlobalContext();
-  // let currentUser = { email: "meruyert@baigroupkz.com" };
-  // const [user, setUser] = useState(null);
-  // const [lang, setLang] = useState("Ru");
-  // const [showLink, setShowLinks] = useState(false);
-
+  const { showLink, setShowLinks } = useGlobalContext();
+  const { auth } = useAuth();
+  useEffect(() => {
+    console.log(auth);
+  });
   return (
     <header>
       <nav className="left-header">
@@ -29,8 +29,8 @@ const Header = () => {
       </nav>
       <ChangeLang />
 
-      {user && <Account />}
-      {!user ? <LoginBtn /> : <LogOutBtn />}
+      {auth.name && <Account />}
+      {!auth.name ? <LoginBtn /> : <LogOutBtn />}
     </header>
   );
 };

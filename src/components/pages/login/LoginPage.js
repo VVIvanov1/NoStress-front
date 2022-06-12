@@ -2,14 +2,19 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import "./loginPage.css";
 import { useGlobalContext } from "../../../context";
+import useAuth from "../../../hooks/useAuth";
 import LoginFetch from "./LoginFetch";
+
 const LoginPage = () => {
   const navigate = useNavigate();
   const { lang } = useGlobalContext();
+  const { setAuth } = useAuth();
+
   const [userData, setUserData] = useState({
     login: "",
     password: "",
   });
+  const [success, setSuccess] = useState();
   const handleUserInput = (e) => {
     setUserData(() => {
       userData[e.target.name] = e.target.value;
@@ -18,10 +23,22 @@ const LoginPage = () => {
   };
   const handleLogin = async (e) => {
     e.preventDefault();
-    // console.log(userData);
-    let userLogin = await LoginFetch(userData);
-    if (userLogin.status === 200) {
-      navigate("/main");
+    try {
+      let response = await LoginFetch(userData);
+
+      if (response.status === 200) {
+        setUserData({
+          login: "",
+          password: "",
+        });
+        setAuth(response.data);
+        setSuccess(true);
+        navigate("/main");
+      }
+    } catch (error) {
+      console.log(error);
+      console.log("not this time");
+      setSuccess(false);
     }
   };
   return (

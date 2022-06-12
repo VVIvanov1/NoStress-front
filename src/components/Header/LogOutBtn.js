@@ -1,10 +1,12 @@
 import React, { useRef, useEffect } from "react";
 import { RiLogoutCircleLine } from "react-icons/ri";
 import { useGlobalContext } from "../../context";
+import useAuth from "../../hooks/useAuth";
 
 const LogOutBtn = () => {
   const { setUser, lang, showLink } = useGlobalContext();
   const logoutContainer = useRef(null);
+  const { setAuth } = useAuth();
 
   useEffect(() => {
     if (showLink) {
@@ -18,7 +20,7 @@ const LogOutBtn = () => {
 
   return (
     <div className="security" ref={logoutContainer}>
-      <a href="#" onClick={() => setUser(null)}>
+      <a href="#" onClick={() => setAuth({})}>
         <RiLogoutCircleLine />
         <span>
           {lang === "En"
