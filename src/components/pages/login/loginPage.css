@@ -6,17 +6,23 @@
   margin-top: 40px;
   gap: 15px;
 }
+.login-container h3 {
+  color: #828282;
+}
 .login-container form {
   display: flex;
   flex-direction: column;
   gap: 15px;
   min-width: 280px;
+  color: #828282;
 }
 .login-container form label {
   display: contents;
 }
 .login-container form label input {
   padding: 7px;
+  border: 1px solid #bdbdbd;
+  border-radius: 4px;
 }
 .login-buttons {
   display: flex;
