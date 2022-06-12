@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import { FaBars } from "react-icons/fa";
 import Account from "./Account";
 import LoginBtn from "./LoginBtn";
@@ -11,9 +11,7 @@ import useAuth from "../../hooks/useAuth";
 const Header = () => {
   const { showLink, setShowLinks } = useGlobalContext();
   const { auth } = useAuth();
-  useEffect(() => {
-    console.log(auth);
-  });
+
   return (
     <header>
       <nav className="left-header">

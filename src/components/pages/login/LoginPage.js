@@ -9,6 +9,7 @@ const LoginPage = () => {
   const navigate = useNavigate();
   const { lang } = useGlobalContext();
   const { setAuth } = useAuth();
+  const [successMessage, setSuccessMessage] = useState("");
 
   const [userData, setUserData] = useState({
     login: "",
@@ -36,14 +37,19 @@ const LoginPage = () => {
         navigate("/main");
       }
     } catch (error) {
-      console.log(error);
-      console.log("not this time");
+      let message = error.response.data.message;
+      setSuccessMessage(message);
       setSuccess(false);
+      setUserData({
+        login: "",
+        password: "",
+      });
     }
   };
   return (
     <section className="login-container">
       <h3>{lang === "En" ? "Login" : lang === "Ru" ? "Вход" : "Кіру"}</h3>
+
       <form onChange={(e) => handleUserInput(e)}>
         <label>
           {lang === "En" ? "Login:" : lang === "Ru" ? "Логин:" : "Кіру:"}
@@ -68,6 +74,7 @@ const LoginPage = () => {
             {lang === "En" ? "Submit" : lang === "Kz" ? "Eнгізу" : "Войти"}
           </button>
         </div>
+        {successMessage && <p className="error-message">{successMessage}</p>}
         <Link to="/password-reset" className="forgot-password">
           <p>
             {lang === "En"

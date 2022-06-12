@@ -113,9 +113,9 @@
   border: 2px solid darkcyan;
   cursor: pointer;
 }
-.phone {
+/* .phone {
   padding-left: 10px;
-}
+} */
 .top-status {
   flex-wrap: wrap;
 }

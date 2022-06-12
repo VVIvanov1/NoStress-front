@@ -66,3 +66,7 @@
   align-self: flex-end;
   color: darkcyan;
 }
+.error-message {
+  color: darkred;
+  margin: 0;
+}
