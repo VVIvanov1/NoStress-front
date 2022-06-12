@@ -6,6 +6,7 @@ import MainPage from "../pages/MainPage";
 import MyOrdersPage from "../pages/MyOrdersPage";
 import NewOrderPage from "../pages/NewOrderPage";
 import RegisterPage from "../pages/login/RegisterPage";
+import PasswordReset from "../pages/login/PasswordReset";
 import { useGlobalContext } from "../../context";
 
 import LoginPage from "../pages/login/LoginPage";
@@ -19,6 +20,7 @@ const WorkArea = () => {
         <Route path="/neworder" element={<NewOrderPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
+        <Route path="/password-reset" element={<PasswordReset />} />
       </Routes>
     </div>
   );

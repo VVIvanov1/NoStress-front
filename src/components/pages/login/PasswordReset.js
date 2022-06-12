@@ -1,10 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import "./loginPage.css";
-const LoginPage = () => {
+import { Link } from "react-router-dom";
+
+const PasswordReset = () => {
   return (
     <section className="login-container">
-      <h3>Login</h3>
+      <h3>Reset password</h3>
       <form>
         <label>
           Login:
@@ -14,18 +15,12 @@ const LoginPage = () => {
           Password:
           <input type="password" name="password" id="password" required />
         </label>
-        <div className="login-buttons">
-          <Link to="/register">
-            <p>Register</p>
-          </Link>
-          <button className="submit-login-btn">Submit</button>
+        <div className="reset-buttons">
+          <button className="submit-reset-btn">Submit</button>
         </div>
-        <Link to="/password-reset" className="forgot-password">
-          <p>Forgot password?</p>
-        </Link>
       </form>
     </section>
   );
 };
 
-export default LoginPage;
+export default PasswordReset;

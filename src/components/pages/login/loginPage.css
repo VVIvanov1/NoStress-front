@@ -18,3 +18,45 @@
 .login-container form label input {
   padding: 7px;
 }
+.login-buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.login-buttons a {
+  color: darkcyan;
+}
+.submit-login-btn {
+  color: darkcyan;
+  border: 1px solid darkcyan;
+  border-radius: 6px;
+  padding: 6px 12px 6px 12px;
+  background: #fff;
+  cursor: pointer;
+}
+.reset-buttons {
+  display: contents;
+}
+.submit-reset-btn {
+  color: darkcyan;
+  border: 1px solid darkcyan;
+  border-radius: 6px;
+  padding: 6px 12px 6px 12px;
+  background: #fff;
+  cursor: pointer;
+  align-self: flex-end;
+}
+.submit-reset-btn:hover {
+  color: #fff;
+  background: darkcyan;
+}
+.submit-login-btn:hover {
+  color: #fff;
+  background: darkcyan;
+}
+
+.forgot-password {
+  margin: 0;
+  align-self: flex-end;
+  color: darkcyan;
+}
