@@ -13,11 +13,4 @@ export default async function LoginFetch(obj) {
   } catch (error) {
     throw new Error(error);
   }
-
-  // .then(function(response) {
-  //   return response;
-  // })
-  // .catch(function(error) {
-  //   console.log(error);
-  // });
 }

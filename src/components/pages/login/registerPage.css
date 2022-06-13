@@ -1,0 +1,50 @@
+.offscreen {
+  position: absolute;
+  left: -9999px;
+}
+
+.hide {
+  display: none;
+}
+
+.valid {
+  color: limegreen;
+  margin-left: 0.25rem;
+}
+.password-label {
+  display: flex;
+}
+.password-label p {
+  margin: 0;
+}
+.invalid {
+  color: red;
+  margin-left: 0.25rem;
+}
+.instructions {
+  font-size: 0.75rem;
+  border-radius: 0.5rem;
+  background: #000;
+  color: #fff;
+  padding: 0.25rem;
+  position: relative;
+  /* bottom: -10px; */
+}
+
+.instructions > svg {
+  margin-right: 0.25rem;
+}
+.register-button {
+  display: flex;
+  justify-content: flex-end;
+}
+.success-section {
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 0 auto;
+  margin-top: 200px;
+  align-content: center;
+  line-height: 1.7rem;
+  color: #828282;
+}
