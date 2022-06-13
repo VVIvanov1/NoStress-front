@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 import "./loginPage.css";
 import { useGlobalContext } from "../../../context";
 import useAuth from "../../../hooks/useAuth";
@@ -7,9 +7,11 @@ import LoginFetch from "./LoginFetch";
 
 const LoginPage = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const { lang } = useGlobalContext();
   const { setAuth } = useAuth();
   const [successMessage, setSuccessMessage] = useState("");
+  // const from = location.state.from.pathname || "/main";
 
   const [userData, setUserData] = useState({
     login: "",
@@ -26,15 +28,17 @@ const LoginPage = () => {
     e.preventDefault();
     try {
       let response = await LoginFetch(userData);
+      let { name, email } = response.data;
+      const accessToken = response.data.accessToken;
 
       if (response.status === 200) {
         setUserData({
           login: "",
           password: "",
         });
-        setAuth(response.data);
+        setAuth({ name, email, accessToken });
         setSuccess(true);
-        navigate("/main");
+        navigate("/main", { replace: true });
       }
     } catch (error) {
       let message = error.response.data.message;

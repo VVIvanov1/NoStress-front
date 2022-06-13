@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import team from "../../team";
 import { FaShareSquare } from "react-icons/fa";
 import { useGlobalContext } from "../../context.js";
@@ -13,7 +13,12 @@ const ShareButton = ({ id, page }) => {
   // const { setSharedUser } = useGlobalContext();
   const [hoverIn, setHoverIn] = useState(false);
   const [position, setPosition] = useState(null);
+  const [teamObj, setTeam] = useState({});
   const shareBtnRef = useRef(null);
+
+  useEffect(() => {
+    setTeam(team);
+  }, []);
 
   const handleHover = () => {
     setHoverIn(!hoverIn);
@@ -47,11 +52,11 @@ const ShareButton = ({ id, page }) => {
           style={{ left: position.left, top: position.top }}
         >
           <ul>
-            {team.map((member) => {
+            {teamObj.map((member) => {
               let { id, name, image } = member;
               return (
                 <li
-                  key={id}
+                  key={name}
                   className="color-grey"
                   onClick={(e) => handleSelection(e)}
                 >
