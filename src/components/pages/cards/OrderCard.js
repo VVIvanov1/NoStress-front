@@ -112,8 +112,9 @@ const OrderCard = ({
             : lang === "Ru"
             ? "Заказ создан:"
             : "Тапсырыс жасалды"}{" "}
-          {dateInfo.days} {lang === "En" ? "d." : lang === "Ru" ? "дн." : "к."}{" "}
-          {dateInfo.hours} {lang === "En" ? "h" : lang === "Ru" ? "ч" : "с."}
+          {dateInfo.days} {lang === "En" ? "d." : lang === "Ru" ? "дн." : "к"}{" "}
+          {dateInfo.hours} {lang === "En" ? "h" : lang === "Ru" ? "ч" : "с"}{" "}
+          {dateInfo.minutes} {lang === "En" ? "m" : lang === "Ru" ? "м" : "м"}
         </div>
         <div className="row-item">
           <button className="comments-btn" onClick={handleShowComments}>

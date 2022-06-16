@@ -28,6 +28,9 @@ const NewOrderPage = () => {
       const result = await axios.post(url, formData, {
         withCredentials: true,
       });
+      if (result) {
+        navigate("/myorders");
+      }
       console.log(result);
     } catch (error) {
       console.error(error);
