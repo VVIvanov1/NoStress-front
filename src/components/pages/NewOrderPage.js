@@ -24,7 +24,7 @@ const NewOrderPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const url = "http://localhost:5000/orders/new-manual";
+      const url = "https://backend-baigroupkz.herokuapp.com/orders/new-manual";
       const result = await axios.post(url, formData, {
         withCredentials: true,
       });
