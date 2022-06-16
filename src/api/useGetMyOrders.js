@@ -3,6 +3,7 @@ import useAuth from "../hooks/useAuth";
 import { useEffect, useState } from "react";
 
 const BASE_URL = "http://localhost:5000/orders/get-my-orders";
+const HEROKU = "https://backend-baigroupkz.herokuapp.com/orders/get-my-orders";
 
 function useFetchMyOrders() {
   const [data, setData] = useState([]);
@@ -11,7 +12,7 @@ function useFetchMyOrders() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const ords = await axios.get(`${BASE_URL}?user=${auth.email}`, {
+        const ords = await axios.get(`${HEROKU}?user=${auth.email}`, {
           withCredentials: true,
         });
         console.log(ords);
