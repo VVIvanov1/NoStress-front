@@ -49,16 +49,18 @@
   cursor: pointer;
   padding: 6px 10px;
   flex-shrink: 0;
-  background: #e66ae1;
-  border: 1px solid #e66ae1;
-  color: #ffffff;
-  border-radius: 6px;
+  background: #fff;
+  border-bottom: 1px solid #e66ae1;
+  color: #e66ae1;
+  /* border-radius: 6px; */
+  border-width: inherit;
+  border-bottom: 1px solid;
   font-size: clamp(12px, 13px, 14px);
   font-weight: 600;
 }
 .right-side-nav-btn:hover {
-  color: #e66ae1;
-  background: #fff;
+  color: #fff;
+  background: #e66ae1;
 }
 .btn-active {
   color: #e66ae1;

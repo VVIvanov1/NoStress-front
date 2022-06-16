@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import "./loginPage.css";
 import { useGlobalContext } from "../../../context";
@@ -9,7 +9,7 @@ const LoginPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { lang } = useGlobalContext();
-  const { setAuth } = useAuth();
+  const { setAuth, persist, setPersist } = useAuth();
   const [successMessage, setSuccessMessage] = useState("");
   // const from = location.state.from.pathname || "/main";
 
@@ -50,6 +50,14 @@ const LoginPage = () => {
       });
     }
   };
+  const togglePersist = () => {
+    setPersist((prev) => !prev);
+  };
+
+  useEffect(() => {
+    localStorage.setItem("persist", persist);
+  }, [persist]);
+
   return (
     <section className="login-container">
       <h3>{lang === "En" ? "Login" : lang === "Ru" ? "Вход" : "Кіру"}</h3>
@@ -77,6 +85,15 @@ const LoginPage = () => {
           <button className="submit-login-btn" onClick={(e) => handleLogin(e)}>
             {lang === "En" ? "Submit" : lang === "Kz" ? "Eнгізу" : "Войти"}
           </button>
+        </div>
+        <div className="ersistCheck">
+          <input
+            type="checkbox"
+            id="persist"
+            onChange={togglePersist}
+            checked={persist}
+          />
+          <label htmlFor="persist">Trust this device</label>
         </div>
         {successMessage && <p className="error-message">{successMessage}</p>}
         <Link to="/password-reset" className="forgot-password">

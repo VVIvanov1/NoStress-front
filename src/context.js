@@ -6,7 +6,7 @@ const AppProvider = ({ children }) => {
   const [lang, setLang] = useState(
     window.localStorage.getItem("language") || "Ru"
   );
-  const currentUser = { email: "meruyert@baigroupkz.com" };
+
   const activeLangStyle = { background: "#00b0c7" };
   const langs = ["Kz", "Ru", "En"];
   const [showLink, setShowLinks] = useState(false);
@@ -44,7 +44,7 @@ const AppProvider = ({ children }) => {
         user,
         lang,
         langs,
-        currentUser,
+
         activeLangStyle,
         setLang,
         showLink,

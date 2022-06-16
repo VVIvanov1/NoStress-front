@@ -1,12 +1,12 @@
 import React, { useRef, useEffect } from "react";
 import { RiLoginCircleLine } from "react-icons/ri";
 import { useGlobalContext } from "../../context";
-import { useNavigate } from "react-router-dom";
+
 import { Link } from "react-router-dom";
 
 const LoginBtn = () => {
-  const { currentUser, setUser, lang, showLink } = useGlobalContext();
-  const navigate = useNavigate();
+  const { lang, showLink } = useGlobalContext();
+
   const loginContainer = useRef(null);
 
   useEffect(() => {
@@ -19,14 +19,8 @@ const LoginBtn = () => {
     }
   }, [showLink]);
 
-  const processLogin = () => {
-    // setUser(currentUser);
-    navigate("/login");
-  };
-
   return (
     <div className="security" ref={loginContainer}>
-      {/* <a href="#" onClick={processLogin}> */}
       <Link to="/login">
         <RiLoginCircleLine />
         <span>
@@ -39,7 +33,6 @@ const LoginBtn = () => {
             : "Кirish"}
         </span>
       </Link>
-      {/* </a> */}
     </div>
   );
 };

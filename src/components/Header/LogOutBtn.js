@@ -1,12 +1,15 @@
 import React, { useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { RiLogoutCircleLine } from "react-icons/ri";
 import { useGlobalContext } from "../../context";
-import useAuth from "../../hooks/useAuth";
+// import useAuth from "../../hooks/useAuth";
+import useLogout from "../useLogout";
 
 const LogOutBtn = () => {
-  const { setUser, lang, showLink } = useGlobalContext();
+  const { lang, showLink } = useGlobalContext();
   const logoutContainer = useRef(null);
-  const { setAuth } = useAuth();
+  const logout = useLogout();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (showLink) {
@@ -18,9 +21,14 @@ const LogOutBtn = () => {
     }
   }, [showLink]);
 
+  const setLogout = async () => {
+    await logout();
+    navigate("/login");
+  };
+
   return (
     <div className="security" ref={logoutContainer}>
-      <a href="#" onClick={() => setAuth({})}>
+      <a href="#" onClick={setLogout}>
         <RiLogoutCircleLine />
         <span>
           {lang === "En"

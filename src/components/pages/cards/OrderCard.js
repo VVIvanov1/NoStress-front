@@ -33,68 +33,42 @@ const OrderCard = ({
   user,
 }) => {
   const {
-    showTooltip,
-    setShowTooltip,
+    // showTooltip,
+    // setShowTooltip,
     showShareModal,
     setShowShareModal,
     lang,
   } = useGlobalContext();
   const [showComments, setShowComments] = useState(false);
-  // const [toggleComments, setToggleComments] = useState(false);
-  const [tooltipId, setTooltipId] = useState("");
-  const [ttpos, setTtpos] = useState();
 
-  const dateInfo = useDateNormaliser(createdAt.$date.$numberLong);
-
-  // let commentsText = comments.join("\n");
+  const dateInfo = useDateNormaliser(createdAt);
 
   const handleShowComments = () => {
     setShowComments(!showComments);
   };
 
-  const toggleTooltip = (e) => {
-    if (e.target.className === "row-item geo") {
-      setTooltipId(e.target.id);
-      let tooltipStyle = useTooltipPosition(e.target);
-      setTtpos(tooltipStyle);
-      setShowTooltip(true);
-    }
-  };
-  const hideTooltip = () => {
-    setShowTooltip(false);
-    setTtpos({});
-    setTooltipId("");
-  };
+  // const toggleTooltip = (e) => {
+  //   if (e.target.className === "row-item geo") {
+  //     setTooltipId(e.target.id);
+  //     let tooltipStyle = useTooltipPosition(e.target);
+  //     setTtpos(tooltipStyle);
+  //     setShowTooltip(true);
+  //   }
+  // };
+  // const hideTooltip = () => {
+  //   setShowTooltip(false);
+  //   setTtpos({});
+  //   setTooltipId("");
+  // };
 
   return (
     <div className="my-order-card" key={_id.$oid}>
       <div className="my-order-card__top">
-        <div
-          className="row-item geo"
-          id="geo"
-          onMouseOver={(e) => toggleTooltip(e)}
-          onMouseLeave={() => hideTooltip()}
-        >
+        <div className="row-item geo" id="geo">
           <BsGeoAlt />
           {page}
-          {showTooltip && tooltipId === "geo" ? (
-            <Tooltip
-              text={
-                lang === "En"
-                  ? "Tour or destination for this order"
-                  : lang === "Ru"
-                  ? "Тур/направление данного заказа"
-                  : "Осы тапсырыс үшін тур немесе баратын жер"
-              }
-              {...ttpos}
-            />
-          ) : null}
         </div>
-        <div
-          className="row-item name"
-          onMouseOver={(e) => toggleTooltip(e)}
-          onMouseLeave={hideTooltip}
-        >
+        <div className="row-item name">
           <FaRegUserCircle />
           {name}
         </div>
@@ -105,7 +79,7 @@ const OrderCard = ({
           {status}
           <FaBookmark />
           <div className="order-type-mark">
-            {source === "manual" ? "m" : "w"}
+            {source === "Manual" ? "m" : "w"}
           </div>
         </div>
         <ShareButton
@@ -128,9 +102,9 @@ const OrderCard = ({
           }`}
         >
           <FaCalendarCheck />
+          {/* {createdAt} */}
           {dateInfo.date}
           {dateInfo.days > 0 && <FaFireAlt />}
-          {/* {const d = new Date(createdAt.$date.$numberLong)} */}
         </div>
         <div className="row-item">
           {lang === "En"
@@ -140,7 +114,6 @@ const OrderCard = ({
             : "Тапсырыс жасалды"}{" "}
           {dateInfo.days} {lang === "En" ? "d." : lang === "Ru" ? "дн." : "к."}{" "}
           {dateInfo.hours} {lang === "En" ? "h" : lang === "Ru" ? "ч" : "с."}
-          {/* <Tooltip text="Lifetime of this order" /> */}
         </div>
         <div className="row-item">
           <button className="comments-btn" onClick={handleShowComments}>

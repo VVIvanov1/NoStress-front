@@ -9,6 +9,7 @@ import RegisterPage from "../pages/login/RegisterPage";
 import PasswordReset from "../pages/login/PasswordReset";
 import { useGlobalContext } from "../../context";
 import RequireAuth from "../RequireAuth";
+import PersistLogin from "../PersistLogin";
 
 import LoginPage from "../pages/login/LoginPage";
 const WorkArea = () => {
@@ -16,10 +17,12 @@ const WorkArea = () => {
   return (
     <div className="main-workarea">
       <Routes>
-        <Route element={<RequireAuth />}>
-          <Route path="/main" element={<MainPage />} />
-          <Route path="/myorders" element={<MyOrdersPage />} />
-          <Route path="/neworder" element={<NewOrderPage />} />
+        <Route element={<PersistLogin />}>
+          <Route element={<RequireAuth />}>
+            <Route path="/main" element={<MainPage />} />
+            <Route path="/myorders" element={<MyOrdersPage />} />
+            <Route path="/neworder" element={<NewOrderPage />} />
+          </Route>
         </Route>
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />

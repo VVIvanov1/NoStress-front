@@ -106,7 +106,7 @@
   align-items: center;
   height: 17px;
   width: 17px;
-  align-items: end;
+  align-items: flex-end;
   border-radius: 50%;
   color: #fff;
   background: darkcyan;

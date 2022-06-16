@@ -1,14 +1,25 @@
-import React from "react";
-import { useGlobalContext } from "../../context";
+import React, { useEffect, useState } from "react";
+// import { useGlobalContext } from "../../context";
 import OrderCard from "./cards/OrderCard";
 import LeftInfoPanel from "../Header/LeftInfoPanel";
 import RightSideButtons from "../Header/RightSideButtons";
+// import axios from "axios";
+import useAuth from "../../hooks/useAuth";
+import useGetMyOrders from "../../api/useGetMyOrders";
 
 import "./MyOrders.css";
 import ShareModal from "./ShareModal";
 
 const MyOrdersPage = () => {
-  const { lang, showShareModal, data, user } = useGlobalContext();
+  // const { lang, showShareModal } = useGlobalContext();
+  const [myOrders, setMyOrders] = useState([]);
+
+  const orders = useGetMyOrders();
+
+  useEffect(() => {
+    setMyOrders(orders);
+  }, []);
+
   return (
     <>
       <div className="left-side">
@@ -17,16 +28,12 @@ const MyOrdersPage = () => {
       <div className="right-side">
         <RightSideButtons />
         <div className="my-orders-container">
-          {data.map((item) => {
-            if (
-              item.status === "in progress" &&
-              item.user.$oid === "6280b7593b5ae121eb8f7f8c"
-            ) {
-              return <OrderCard {...item} key={item._id.$oid} />;
-            }
+          {orders.map((item) => {
+            console.log(item);
+            return <OrderCard {...item} key={item._id} />;
           })}
         </div>
-        {showShareModal && <ShareModal />}
+        {/* {showShareModal && <ShareModal />} */}
       </div>
     </>
   );

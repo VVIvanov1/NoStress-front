@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FaBars } from "react-icons/fa";
 import Account from "./Account";
 import LoginBtn from "./LoginBtn";
@@ -27,8 +27,8 @@ const Header = () => {
       </nav>
       <ChangeLang />
 
-      {auth.name && <Account />}
-      {!auth.name ? <LoginBtn /> : <LogOutBtn />}
+      <Account />
+      {auth.accessToken ? <LogOutBtn /> : <LoginBtn />}
     </header>
   );
 };

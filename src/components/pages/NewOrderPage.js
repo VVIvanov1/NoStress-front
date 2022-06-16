@@ -1,12 +1,14 @@
 import React, { useState } from "react";
+import axios from "axios";
 import "../../newOrder.css";
 import { FaTimes } from "react-icons/fa";
 import { useGlobalContext } from "../../context";
+import useAuth from "../../hooks/useAuth";
 import { useNavigate } from "react-router-dom";
 const NewOrderPage = () => {
   const navigate = useNavigate();
-  // const lang = window.localStorage.getItem("language");
   const { lang } = useGlobalContext();
+  const { auth } = useAuth();
   const initialState = {
     name: "",
     phone: "",
@@ -16,12 +18,21 @@ const NewOrderPage = () => {
 
   const handleChangeForm = (e) => {
     setFormData((obj) => {
-      return { ...obj, [e.target.name]: e.target.value };
+      return { ...obj, [e.target.name]: e.target.value, auth };
     });
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("SUBMIT");
+    try {
+      const url = "http://localhost:5000/orders/new-manual";
+      const result = await axios.post(url, formData, {
+        withCredentials: true,
+      });
+      console.log(result);
+    } catch (error) {
+      console.error(error);
+    }
+
     console.log(formData);
   };
   const handleClose = (e) => {
