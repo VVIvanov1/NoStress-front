@@ -28,8 +28,8 @@ const LoginPage = () => {
     e.preventDefault();
     try {
       let response = await LoginFetch(userData);
-      console.log(response);
-      let { name, email } = response.data;
+
+      let { name, email, id } = response.data;
       const accessToken = response.data.accessToken;
 
       if (response.status === 200) {
@@ -37,7 +37,7 @@ const LoginPage = () => {
           login: "",
           password: "",
         });
-        setAuth({ name, email, accessToken });
+        setAuth({ name, email, accessToken, id });
         setSuccess(true);
         navigate("/main", { replace: true });
       }
