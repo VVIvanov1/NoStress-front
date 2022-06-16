@@ -28,6 +28,7 @@ const LoginPage = () => {
     e.preventDefault();
     try {
       let response = await LoginFetch(userData);
+      console.log(response);
       let { name, email } = response.data;
       const accessToken = response.data.accessToken;
 

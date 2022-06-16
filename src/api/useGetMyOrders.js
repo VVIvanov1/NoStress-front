@@ -2,8 +2,15 @@ import axios from "axios";
 import useAuth from "../hooks/useAuth";
 import { useEffect, useState } from "react";
 
-const BASE_URL = "http://localhost:5000/orders/get-my-orders";
-const HEROKU = "https://backend-baigroupkz.herokuapp.com/orders/get-my-orders";
+// const BASE_URL = "http://localhost:5000/orders/get-my-orders";
+// const HEROKU = "https://backend-baigroupkz.herokuapp.com/orders/get-my-orders";
+var BASE_URL = "";
+
+if (window.location.origin === "http://localhost:3000") {
+  BASE_URL = "http://localhost:5000/orders";
+} else if (window.location.origin === "https://corp-baigroupkz.netlify.app") {
+  BASE_URL = "https://backend-baigroupkz.herokuapp.com/orders";
+}
 
 function useFetchMyOrders() {
   const [data, setData] = useState([]);
@@ -12,7 +19,7 @@ function useFetchMyOrders() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const ords = await axios.get(`${HEROKU}?user=${auth.email}`, {
+        const ords = await axios.get(`${BASE_URL}?user=${auth.email}`, {
           withCredentials: true,
         });
         console.log(ords);

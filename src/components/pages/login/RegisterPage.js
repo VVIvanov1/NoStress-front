@@ -7,7 +7,7 @@ import { useGlobalContext } from "../../../context";
 import "./loginPage.css";
 const USER_REGEX = /[a-zA-Z].{3,30}/gm;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,24}$/gm;
-const BASE_URL = "/register";
+const BASE_URL = "https://corp-baigroupkz.netlify.app/register";
 
 const RegisterPage = () => {
   const { lang } = useGlobalContext();
