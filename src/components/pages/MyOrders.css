@@ -118,6 +118,7 @@
 } */
 .top-status {
   flex-wrap: wrap;
+  justify-self: flex-end;
 }
 .order-type-mark * {
   width: 25px;

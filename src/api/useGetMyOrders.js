@@ -2,8 +2,6 @@ import axios from "axios";
 import useAuth from "../hooks/useAuth";
 import { useEffect, useState } from "react";
 
-// const BASE_URL = "http://localhost:5000/orders/get-my-orders";
-// const HEROKU = "https://backend-baigroupkz.herokuapp.com/orders/get-my-orders";
 var BASE_URL = "";
 
 if (window.location.origin === "http://localhost:3000") {
@@ -22,7 +20,7 @@ function useFetchMyOrders() {
         const ords = await axios.get(`${BASE_URL}?user=${auth.email}`, {
           withCredentials: true,
         });
-        console.log(ords);
+
         setData(ords.data);
       } catch (error) {
         console.error(error);
