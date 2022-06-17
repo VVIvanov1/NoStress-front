@@ -13,12 +13,12 @@ import ShareModal from "./ShareModal";
 const MyOrdersPage = () => {
   // const { lang, showShareModal } = useGlobalContext();
   const [myOrders, setMyOrders] = useState([]);
-
+  const { auth } = useAuth();
   const orders = useGetMyOrders();
 
   useEffect(() => {
     setMyOrders(orders);
-  }, []);
+  }, [orders, auth]);
 
   return (
     <>
@@ -28,8 +28,7 @@ const MyOrdersPage = () => {
       <div className="right-side">
         <RightSideButtons />
         <div className="my-orders-container">
-          {orders.map((item) => {
-            console.log(item);
+          {myOrders.map((item) => {
             return <OrderCard {...item} key={item._id} />;
           })}
         </div>
