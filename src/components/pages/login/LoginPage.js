@@ -12,7 +12,7 @@ const LoginPage = () => {
   const { setAuth, persist, setPersist } = useAuth();
   const [successMessage, setSuccessMessage] = useState("");
   // const from = location.state.from.pathname || "/main";
-
+  const [proc, setProc] = useState("");
   const [userData, setUserData] = useState({
     login: "",
     password: "",
@@ -26,6 +26,7 @@ const LoginPage = () => {
   };
   const handleLogin = async (e) => {
     e.preventDefault();
+    setProc("clicked");
     try {
       let response = await LoginFetch(userData);
 
@@ -62,7 +63,7 @@ const LoginPage = () => {
   return (
     <section className="login-container">
       <h3>{lang === "En" ? "Login" : lang === "Ru" ? "Вход" : "Кіру"}</h3>
-
+      {proc && <p>{proc}</p>}
       <form onChange={(e) => handleUserInput(e)}>
         <label>
           {lang === "En" ? "Login:" : lang === "Ru" ? "Логин:" : "Кіру:"}

@@ -1,9 +1,9 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState } from "react";
 import { useGlobalContext } from "../../../context";
-import Tooltip from "../../tooltip/TooltipCustom";
+
 import Comments from "./commentsComponent/Comments";
 import useDateNormaliser from "../../../hooks/useDateNormaliser";
-import useTooltipPosition from "../../../hooks/useTooltipPosition";
+
 import ShareButton from "../ShareButton";
 import PhoneCallComponent from "./PhoneCallComponent";
 import {
@@ -65,7 +65,9 @@ const OrderCard = ({
     <div className="my-order-card" key={_id.$oid}>
       <div className="my-order-card__top">
         <div className="row-item geo" id="geo">
-          <BsGeoAlt />
+          <span>
+            <BsGeoAlt />
+          </span>
           {page}
         </div>
         <div className="row-item name">

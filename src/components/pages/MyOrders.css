@@ -113,9 +113,9 @@
   border: 2px solid darkcyan;
   cursor: pointer;
 }
-/* .phone {
-  padding-left: 10px;
-} */
+.phone {
+  padding-left: 9px;
+}
 .top-status {
   flex-wrap: wrap;
   justify-self: flex-end;

@@ -65,7 +65,9 @@ const MainPageCard = ({
     <div className="my-order-card" key={_id.$oid}>
       <div className="my-order-card__top">
         <div className="row-item geo" id="geo">
-          <BsGeoAlt />
+          <span>
+            <BsGeoAlt />
+          </span>
           {page}
         </div>
         <div className="row-item name">
