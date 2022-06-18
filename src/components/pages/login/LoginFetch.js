@@ -9,10 +9,14 @@ export default async function LoginFetch(obj) {
     password: obj.password,
   };
   try {
-    let resp = axios.post(`http://localhost:5000${url}`, body, {
-      headers: { "Content-Type": "application/json" },
-      withCredentials: true,
-    });
+    let resp = axios.post(
+      `https://backend-baigroupkz.herokuapp.com${url}`,
+      body,
+      {
+        headers: { "Content-Type": "application/json" },
+        withCredentials: true,
+      }
+    );
     return resp;
   } catch (error) {
     throw new Error(error);
