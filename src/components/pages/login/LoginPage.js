@@ -26,10 +26,10 @@ const LoginPage = () => {
   };
   const handleLogin = async (e) => {
     e.preventDefault();
-    setProc("clicked");
+
     try {
       let response = await LoginFetch(userData);
-
+      setProc(response.status);
       let { name, email, id } = response.data;
       const accessToken = response.data.accessToken;
 
