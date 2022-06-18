@@ -2,9 +2,19 @@ import { Outlet } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import useRefreshToken from "../hooks/useRefreshToken";
 import useAuth from "../hooks/useAuth";
+import { css } from "@emotion/react";
+import ClockLoader from "react-spinners/cjs/ClockLoader";
+
+const override = css`
+  display: block;
+  margin: 20em auto;
+  border-color: #00b0c7;
+  color: #00b0c7;
+`;
 
 function PersistLogin() {
   const [isLoading, setIsLoading] = useState(true);
+  let [color, setColor] = useState("#00b0c7");
   const refresh = useRefreshToken();
   const { auth, persist } = useAuth();
 
@@ -25,7 +35,20 @@ function PersistLogin() {
   }, []);
 
   return (
-    <>{!persist ? <Outlet /> : isLoading ? <p>Loading...</p> : <Outlet />}</>
+    <>
+      {!persist ? (
+        <Outlet />
+      ) : isLoading ? (
+        <ClockLoader
+          color={color}
+          loading={isLoading}
+          css={override}
+          size={150}
+        />
+      ) : (
+        <Outlet />
+      )}
+    </>
   );
 }
 
