@@ -1,17 +1,29 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v8.4.14,
+* Autoprefixer: v10.4.7
+* Browsers: last 4 version
+*/
+
 .my-orders-container {
+  display: -ms-grid;
   display: grid;
 }
 .my-order-card {
+  display: -ms-grid;
   display: grid;
+  -ms-grid-rows: auto 10px auto 10px auto;
   grid-template-areas:
     "top right"
     "bottom right"
     "comments comments";
+  -ms-grid-columns: 4fr 10px 1fr;
   grid-template-columns: 4fr 1fr;
   gap: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
   background: #ffffff;
+  -webkit-box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 8px;
   padding-top: 10px;
@@ -19,6 +31,7 @@
 }
 @media (max-width: 650px) {
   .my-order-card {
+    -ms-grid-columns: 2fr 1fr;
     grid-template-columns: 2fr 1fr;
     grid-template-areas:
       "top right"
@@ -28,14 +41,19 @@
 }
 
 .my-order-card__comments {
+  -ms-grid-row: 5;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
   margin: 10px;
   padding-top: 10px;
   padding-bottom: 10px;
   background: #e66ae12b;
   border-radius: 5px;
   grid-area: comments;
+  display: -ms-grid;
   display: grid;
   gap: 20px;
+  -ms-grid-columns: 5fr 20px 1fr;
   grid-template-columns: 5fr 1fr;
   color: darkcyan;
   grid-template-areas: "comment button";
@@ -44,6 +62,7 @@
 }
 @media (max-width: 650px) {
   .my-order-card__comments {
+    -ms-grid-columns: 4fr;
     grid-template-columns: 4fr;
     grid-template-areas:
       "comment"
@@ -56,21 +75,41 @@
   width: -webkit-fill-available;
 }
 .edit-comments-btn {
+  -ms-grid-row: 1;
+  -ms-grid-column: 3;
   grid-area: button;
   padding: 6px;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
+}
+@media (max-width: 650px) {
+  .edit-comments-btn {
+    -ms-grid-row: 2;
+    -ms-grid-column: 1;
+  }
 }
 
 .edit-comments-buttons {
   max-width: 280px;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
   justify-content: flex-end;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   gap: 6px;
   padding: 6px 12px 6px 12px;
 }
 .row-item-right {
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 3;
+  -ms-grid-column: 3;
   grid-area: right;
+  display: -ms-grid;
   display: grid;
   grid-gap: 10px;
   gap: 10px;
@@ -100,12 +139,21 @@
   color: #d73535;
 }
 .order-type-mark {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -ms-flex-line-pack: center;
   align-content: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
   justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   height: 17px;
   width: 17px;
+  -webkit-box-align: end;
+  -ms-flex-align: end;
   align-items: flex-end;
   border-radius: 50%;
   color: #fff;
@@ -117,6 +165,7 @@
   padding-left: 9px;
 }
 .top-status {
+  -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   justify-self: flex-end;
 }
@@ -130,6 +179,9 @@
 }
 
 .my-order-card__top {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  display: -ms-grid;
   display: grid;
   grid-area: top;
   /* grid-template-areas: "top top top"; */
@@ -137,24 +189,56 @@
 }
 
 .my-order-card__bottom {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
   grid-area: bottom;
+  display: -ms-grid;
   display: grid;
   /* grid-template-areas: "bottom bottom bottom"; */
   grid-template-columns: repeat(auto-fit, minmax(200px, 2fr));
 }
 
+@media (max-width: 650px) {
+  .my-order-card__comments {
+    -ms-grid-row: 3;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 2;
+  }
+  .row-item-right {
+    -ms-grid-row: 1;
+    -ms-grid-row-span: 2;
+    -ms-grid-column: 2;
+  }
+  .my-order-card__top {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+  }
+  .my-order-card__bottom {
+    -ms-grid-row: 2;
+    -ms-grid-column: 1;
+  }
+}
+
 .row-item {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   gap: 10px;
   padding: 9px;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 .comments-btn {
   border: none;
   background: #fff;
   cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   gap: 10px;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
 }
 .comments-btn svg {
@@ -162,38 +246,78 @@
   height: 20px;
 }
 .my-order-close-btn {
+  -ms-grid-row: 3;
+  -ms-grid-column: 3;
   background: #fff;
   cursor: pointer;
+  width: -webkit-min-content;
+  width: -moz-min-content;
   width: min-content;
   grid-area: close;
   padding-left: 10px;
   padding-right: 10px;
   border: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   gap: 10px;
 }
 .top-status {
+  -ms-grid-row: 1;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 3;
   grid-area: topstat;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
   justify-content: flex-end;
 }
 .my-order-share-btn {
+  -ms-grid-row: 3;
+  -ms-grid-column: 1;
   grid-area: share;
   background: #fff;
   cursor: pointer;
+  width: -webkit-min-content;
+  width: -moz-min-content;
   width: min-content;
   border: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   gap: 10px;
 }
+@media (max-width: 650px) {
+  .my-order-close-btn {
+    -ms-grid-row: 5;
+    -ms-grid-column: 1;
+  }
+  .top-status {
+    -ms-grid-row: 1;
+    -ms-grid-column: 1;
+    -ms-grid-column-span: 1;
+  }
+  .my-order-share-btn {
+    -ms-grid-row: 3;
+    -ms-grid-column: 1;
+  }
+}
 .edit-comments-buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: space-evenly;
+  -ms-flex-pack: space-evenly;
   justify-content: space-evenly;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
   align-items: center;
   gap: 6px;
 }
 .edit-comment-btn,
 .save-comment-btn {
   cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   color: #fff;
   background: #e66ae1;
@@ -208,8 +332,12 @@ textarea {
 }
 
 .comment {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   gap: 30px;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
   align-items: flex-start;
   padding: 5px;
 }
