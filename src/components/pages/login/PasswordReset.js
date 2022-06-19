@@ -5,53 +5,68 @@ import "./loginPage.css";
 const PasswordReset = () => {
   const [isError, setIsError] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
-  const [email, setEmail] = useState("");
+  const [email, setEmail] = useState({});
+  const [success, setSuccess] = useState(false);
 
   const handleChange = (e) => {
-    setEmail(e.target.value);
+    setIsError(false);
+    setErrorMsg("");
+    setEmail({ [e.target.name]: e.target.value });
   };
   const handleResetSubmit = async (e) => {
     e.preventDefault();
-    let mail = /\S+@\S+\.\S+/gm.test(email);
-    if (!mail) {
-      setIsError(true);
-      setErrorMsg("invalid mail format");
-    }
-    try {
-      const resetRequest = await PasswordResetFetch(email);
 
-      console.log(resetRequest);
-    } catch (error) {
-      setErrorMsg(error.code);
+    let mailCheck = email.email.endsWith("@baigroupkz.com");
+    if (!mailCheck) {
       setIsError(true);
-      console.error(error.code);
+      setErrorMsg(
+        "Неверный формат email. Доступ в систему только по корпоративной почте."
+      );
+    } else {
+      try {
+        const resetRequest = await PasswordResetFetch(email);
+
+        setIsError(true);
+        setSuccess(true);
+        setEmail({});
+        setErrorMsg(resetRequest.data.message);
+      } catch (error) {
+        setErrorMsg(error.response.data.message);
+        setIsError(true);
+        console.error(error);
+      }
     }
   };
   return (
     <section className="login-container">
       {isError && <p>{errorMsg}</p>}
-      <h3>Reset password</h3>
-      <form>
-        <label>
-          Email:
-          <input
-            type="email"
-            name="email"
-            id="email"
-            required
-            onChange={(e) => handleChange(e)}
-          />
-        </label>
+      {success ? null : (
+        <>
+          <h3>Смена пароля</h3>
 
-        <div className="reset-buttons">
-          <button
-            className="submit-reset-btn"
-            onClick={(e) => handleResetSubmit(e)}
-          >
-            Submit
-          </button>
-        </div>
-      </form>
+          <form>
+            <label>
+              Email:
+              <input
+                type="email"
+                name="email"
+                id="email"
+                required
+                onChange={(e) => handleChange(e)}
+              />
+            </label>
+
+            <div className="reset-buttons">
+              <button
+                className="submit-reset-btn"
+                onClick={(e) => handleResetSubmit(e)}
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+        </>
+      )}
     </section>
   );
 };

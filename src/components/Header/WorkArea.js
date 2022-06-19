@@ -10,6 +10,7 @@ import PasswordReset from "../pages/login/PasswordReset";
 import { useGlobalContext } from "../../context";
 import RequireAuth from "../RequireAuth";
 import PersistLogin from "../PersistLogin";
+import PasswordResetConfirm from "../pages/login/PasswordResetConfirm";
 
 import LoginPage from "../pages/login/LoginPage";
 const WorkArea = () => {
@@ -27,6 +28,10 @@ const WorkArea = () => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/password-reset" element={<PasswordReset />} />
+        <Route
+          path="/reset-password-confirm"
+          element={<PasswordResetConfirm />}
+        />
       </Routes>
     </div>
   );
