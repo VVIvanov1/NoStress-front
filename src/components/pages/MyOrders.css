@@ -344,3 +344,19 @@ textarea {
 .comment * {
   margin: 0;
 }
+
+.paging-nav {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+.paging-nav button {
+  cursor: pointer;
+  border: none;
+  border-bottom: 1px solid #e66ae1;
+  color: darkcyan;
+  font-weight: 600;
+  font-size: 1.2rem;
+  padding: 10px;
+  background: #fff;
+}

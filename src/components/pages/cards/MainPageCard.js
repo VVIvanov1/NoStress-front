@@ -47,20 +47,6 @@ const MainPageCard = ({
     setShowComments(!showComments);
   };
 
-  // const toggleTooltip = (e) => {
-  //   if (e.target.className === "row-item geo") {
-  //     setTooltipId(e.target.id);
-  //     let tooltipStyle = useTooltipPosition(e.target);
-  //     setTtpos(tooltipStyle);
-  //     setShowTooltip(true);
-  //   }
-  // };
-  // const hideTooltip = () => {
-  //   setShowTooltip(false);
-  //   setTtpos({});
-  //   setTooltipId("");
-  // };
-
   return (
     <div className="my-order-card" key={_id.$oid}>
       <div className="my-order-card__top">

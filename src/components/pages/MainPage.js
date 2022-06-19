@@ -1,36 +1,27 @@
 import React, { useState, useEffect } from "react";
-import NewOrderCard from "./cards/NewOrderCard";
-import ShareModal from "./ShareModal";
-import { useGlobalContext } from "../../context";
+import axios from "../../api/axios";
 import LeftInfoPanel from "../Header/LeftInfoPanel";
 import RightSideButtons from "../Header/RightSideButtons";
-import axios from "../../api/axios";
-import ClockLoader from "react-spinners/cjs/ClockLoader";
-import { css } from "@emotion/react";
-import MainPageCard from "./cards/MainPageCard";
 
-const override = css`
-  display: block;
-  margin: 15em auto;
-  border-color: red;
-`;
+import { css } from "@emotion/react";
+
+import NewOrders from "../NewOrders";
 
 const MainPage = () => {
-  const { showShareModal } = useGlobalContext();
-  const [orders, setOrders] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [color, setColor] = useState("#00B0C7");
+  const [orders, setOrders] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [cardsPerPage] = useState(4);
 
   useEffect(() => {
     let isMounted = true;
-
     const getOrders = async () => {
       try {
         const response = await axios.get("/orders", {
           withCredentials: true,
         });
-
-        setOrders(response.data);
+        const newOrders = response.data.filter((i) => i.status === "new");
+        setOrders(newOrders);
       } catch (error) {
         console.error(error);
       } finally {
@@ -38,9 +29,21 @@ const MainPage = () => {
       }
     };
     getOrders();
-    // console.log(orders);
+
     return () => (isMounted = false);
   }, []);
+
+  const Paginate = () => {
+    setCurrentPage();
+  };
+
+  const indexOfLastCard = currentPage * cardsPerPage;
+  const indexOfFirstCard = indexOfLastCard - cardsPerPage;
+  const currentCards = orders.slice(indexOfFirstCard, indexOfLastCard);
+
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
 
   return (
     <>
@@ -49,26 +52,13 @@ const MainPage = () => {
       </div>
       <div className="right-side">
         <RightSideButtons />
-        <div className="main-page-container">
-          {isLoading ? (
-            <ClockLoader
-              color={color}
-              loading={isLoading}
-              css={override}
-              size={100}
-            />
-          ) : (
-            <>
-              {orders.map((item) => {
-                if (item.status !== "closed") {
-                  return <MainPageCard {...item} key={item._id} />;
-                }
-              })}
-            </>
-          )}
-
-          {showShareModal && <ShareModal />}
-        </div>
+        <NewOrders
+          orders={currentCards}
+          loading={isLoading}
+          cardsPerPage={cardsPerPage}
+          totalCards={orders.length}
+          paginate={paginate}
+        />
       </div>
     </>
   );
