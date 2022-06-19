@@ -360,3 +360,13 @@ textarea {
   padding: 10px;
   background: #fff;
 }
+.geo {
+  font-weight: 500;
+  color: darkcyan;
+}
+.comments-btn svg {
+  color: darkcyan;
+}
+.name span svg {
+  color: darkcyan;
+}

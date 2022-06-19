@@ -57,7 +57,10 @@ const MainPageCard = ({
           {page}
         </div>
         <div className="row-item name">
-          <FaRegUserCircle />
+          <span>
+            {" "}
+            <FaRegUserCircle />
+          </span>
           {name}
         </div>
         <PhoneCallComponent className="row-item phone" phone={phone} />
