@@ -2,22 +2,23 @@ import React, { useRef, useState, useEffect } from "react";
 import "./registerPage.css";
 import { FaCheck, FaTimes, FaInfoCircle } from "react-icons/fa";
 import axios from "../../../api/axios";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import { useGlobalContext } from "../../../context";
 import "./loginPage.css";
-const USER_REGEX = /[a-zA-Z].{3,30}/gm;
-const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,24}$/g;
-const BASE_URL = "https://corp-baigroupkz.netlify.app/register";
 
-const RegisterPage = () => {
+// const PWD_REGEX = /[a-zA-Z0-9]{8,24}/g;
+const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,24}$/;
+// const BASE_URL = "https://corp-baigroupkz.netlify.app/register";
+// const BASE_URL = "http://localhost:5000/users/reset-password-confirm";
+
+const PasswordResetConfirm = () => {
   const { lang } = useGlobalContext();
-  const userRef = useRef();
+  const location = useLocation();
+  const navigate = useNavigate();
   const errorRef = useRef();
-
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [validName, setValidName] = useState(true);
-  const [userFocus, setUserFocus] = useState(false);
+  const pasRef = useRef();
+  const [base_url, setBase_url] = useState("");
 
   const [password, setPassword] = useState("");
   const [validPassword, setValidPassword] = useState(false);
@@ -31,33 +32,48 @@ const RegisterPage = () => {
   const [success, setSuccess] = useState(false);
 
   useEffect(() => {
-    userRef.current.focus();
+    if (window.location.hostname === "localhost") {
+      setBase_url(`http://localhost:5000/users/reset-password-confirm`);
+    } else {
+      setBase_url(
+        `https://corp-baigroupkz.netlify.app/users/reset-password-confirm`
+      );
+    }
   }, []);
 
   useEffect(() => {
-    setValidName(USER_REGEX.test(name));
-  }, [name]);
+    if (password.length >= 8) {
+      let eq = PWD_REGEX.test(pasRef.current.value);
+      if (eq) {
+        setValidPassword(true);
+      } else {
+        setValidPassword(false);
+      }
+    } else {
+      setValidPassword(false);
+    }
+  }, [password]);
+
   useEffect(() => {
     setValidMatch(password === matchPwd);
   }, [matchPwd]);
-  useEffect(() => {
-    setValidPassword(PWD_REGEX.test(password));
-  }, [password]);
 
   useEffect(() => {
     setErrMessage("");
   }, [password, matchPwd]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const v1 = PWD_REGEX.test(password);
+    const token = location.search.split("=")[1];
     if (!v1) {
-      setErrMessage("Пароль неверен!");
+      setErrMessage("Invalid entry!");
       return;
     }
     try {
       const response = await axios.post(
-        BASE_URL,
-        { name, email, password },
+        base_url,
+        { password, accessToken: token },
         {
           headers: {
             "Content-Type": "application/json",
@@ -65,8 +81,10 @@ const RegisterPage = () => {
           withCredentials: true,
         }
       );
-      if (response.data) {
+      //   console.log(response);
+      if (response.status === 200) {
         setSuccess(true);
+        navigate("/login");
       }
     } catch (error) {
       console.log(error);
@@ -77,13 +95,8 @@ const RegisterPage = () => {
     <>
       {success ? (
         <section className="success-section">
-          <h2>Регистрация успешна!</h2>
-          <p>
-            На почту, указанную при регистрации должно прийти письмо со ссылкой
-            для подтверждения адреса. Пожалуйста, пройдите по ссылке в письме.
-            После этого вы сможете приступить к работе в STRESS-LESS CRM! Желаем
-            вам продуктивной работы! Данное окно можно закрыть.
-          </p>
+          <h2>Пароль успешно изменен!</h2>
+          <p>Можете войти в систему под новым паролем.</p>
         </section>
       ) : (
         <section className="login-container">
@@ -92,41 +105,12 @@ const RegisterPage = () => {
           </p>
           <h3>
             {lang === "En"
-              ? "Register"
+              ? "Change password"
               : lang === "Ru"
-              ? "Регистрация"
-              : "Тіркеу"}
+              ? "Смена пароля"
+              : "Парольді өзгерту"}
           </h3>
           <form onSubmit={handleSubmit}>
-            <label>
-              {lang === "En" ? "Name" : lang === "Ru" ? "Имя" : "Аты"}
-
-              <input
-                ref={userRef}
-                autoComplete="off"
-                onFocus={() => setUserFocus(true)}
-                onBlur={() => setUserFocus(false)}
-                onChange={(e) => setName(e.target.value)}
-                type="text"
-                name="name"
-                id="name"
-                required
-              />
-            </label>
-            <label>
-              {lang === "En"
-                ? "Email"
-                : lang === "Ru"
-                ? "Электронная почта"
-                : "Электрондық пошта"}
-              <input
-                type="email"
-                name="email"
-                id="email"
-                onChange={(e) => setEmail(e.target.value)}
-                required
-              />
-            </label>
             <label>
               <div className="password-label">
                 <span>
@@ -146,10 +130,12 @@ const RegisterPage = () => {
                 </span>
               </div>
               <input
+                ref={pasRef}
                 type="password"
                 onChange={(e) => setPassword(e.target.value)}
                 onFocus={() => setPasswordFocus(true)}
                 onBlur={() => setPasswordFocus(false)}
+                value={password}
                 aria-invalid={validPassword ? "false" : "true"}
                 aria-describedby="pwdnote"
                 name="password"
@@ -219,4 +205,4 @@ const RegisterPage = () => {
   );
 };
 
-export default RegisterPage;
+export default PasswordResetConfirm;
