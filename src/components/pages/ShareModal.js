@@ -1,5 +1,5 @@
 import React from "react";
-import "../../Modal.css";
+import "../../Styles/Modal.css";
 import { FaTimes } from "react-icons/fa";
 import { useGlobalContext } from "../../context";
 

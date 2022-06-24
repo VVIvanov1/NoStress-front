@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
-import "./loginPage.css";
+
 import { useGlobalContext } from "../../../context";
 import useAuth from "../../../hooks/useAuth";
 import LoginFetch from "./LoginFetch";

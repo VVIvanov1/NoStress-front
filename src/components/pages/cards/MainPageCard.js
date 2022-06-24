@@ -1,19 +1,16 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useGlobalContext } from "../../../context";
-import Tooltip from "../../tooltip/TooltipCustom";
+
 import Comments from "./commentsComponent/Comments";
 import useDateNormaliser from "../../../hooks/useDateNormaliser";
-import useTooltipPosition from "../../../hooks/useTooltipPosition";
+
 import ShareButton from "../ShareButton";
 import PhoneCallComponent from "./PhoneCallComponent";
 import {
   FaRegUserCircle,
   FaBookmark,
   FaCalendarCheck,
-  FaPhone,
   FaComments,
-  FaEdit,
-  FaRegSave,
   FaFireAlt,
 } from "react-icons/fa";
 import { ImCoinDollar } from "react-icons/im";
@@ -32,13 +29,7 @@ const MainPageCard = ({
   updatedAt,
   user,
 }) => {
-  const {
-    // showTooltip,
-    // setShowTooltip,
-    showShareModal,
-    setShowShareModal,
-    lang,
-  } = useGlobalContext();
+  const { showShareModal, setShowShareModal, lang } = useGlobalContext();
   const [showComments, setShowComments] = useState(false);
 
   const dateInfo = useDateNormaliser(createdAt);

@@ -10,7 +10,7 @@ const ShareButton = ({ id, page }) => {
     setSharedPage,
     setSharedUser,
   } = useGlobalContext();
-  // const { setSharedUser } = useGlobalContext();
+
   const [hoverIn, setHoverIn] = useState(false);
   const [position, setPosition] = useState(null);
   const [teamObj, setTeam] = useState({});
@@ -20,23 +20,6 @@ const ShareButton = ({ id, page }) => {
   useEffect(() => {
     setTeam(team);
   }, []);
-  // const resizedWindow = () => {
-  //   let rect = shareBtnRef.current.getBoundingClientRect();
-  //   let center = rect.left - rect.width / 2;
-  //   let bottom = rect.bottom + 20;
-  //   let styleDD = { left: `${center}px`, top: `${bottom}px` };
-  //   setPosition(styleDD);
-  // };
-  // useEffect(() => {
-  //   window.addEventListener("scroll", resizedWindow);
-  //   return () => {
-  //     window.removeEventListener("scroll", resizedWindow);
-  //   };
-  // });
-  // window.addEventListener("resize", resizedWindow);
-  // window.removeEventListener("resize", resizedWindow);
-  // window.addEventListener("scroll", resizedWindow);
-  // window.removeEventListener("scroll", resizedWindow);
 
   const handleHover = () => {
     setHoverIn(!hoverIn);
@@ -67,14 +50,10 @@ const ShareButton = ({ id, page }) => {
         <FaShareSquare /> Share
       </button>
       {hoverIn && (
-        <div
-          className="team-dropdown"
-          // style={{ left: position.left, top: position.top }}
-          style={position}
-        >
+        <div className="team-dropdown" style={position}>
           <ul>
             {teamObj.map((member) => {
-              let { id, name, image } = member;
+              let { name, image } = member;
               return (
                 <li
                   key={name}

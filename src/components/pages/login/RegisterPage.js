@@ -1,10 +1,10 @@
 import React, { useRef, useState, useEffect } from "react";
-import "./registerPage.css";
+
 import { FaCheck, FaTimes, FaInfoCircle } from "react-icons/fa";
 import axios from "../../../api/axios";
 
 import { useGlobalContext } from "../../../context";
-import "./loginPage.css";
+
 const USER_REGEX = /[a-zA-Z].{3,30}/gm;
 const PWD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9]).{8,24}$/g;
 const BASE_URL = "https://corp-baigroupkz.netlify.app/register";

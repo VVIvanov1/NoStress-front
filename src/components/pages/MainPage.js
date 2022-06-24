@@ -3,7 +3,7 @@ import axios from "../../api/axios";
 import LeftInfoPanel from "../Header/LeftInfoPanel";
 import RightSideButtons from "../Header/RightSideButtons";
 
-import { css } from "@emotion/react";
+// import { css } from "@emotion/react";
 
 import NewOrders from "../NewOrders";
 
@@ -33,9 +33,9 @@ const MainPage = () => {
     return () => (isMounted = false);
   }, []);
 
-  const Paginate = () => {
-    setCurrentPage();
-  };
+  // const Paginate = () => {
+  //   setCurrentPage();
+  // };
 
   const indexOfLastCard = currentPage * cardsPerPage;
   const indexOfFirstCard = indexOfLastCard - cardsPerPage;

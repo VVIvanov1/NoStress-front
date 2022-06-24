@@ -18,9 +18,3 @@ export const axiosPrivate = axios.create({
   headers: { "Content-Type": "application/json" },
   withCredentials: true,
 });
-
-// export const axiosGetMyOrders = axios.create({
-//   BASE_URL: "http://localhost:5000/orders",
-//   headers: { "Content-Type": "application/json" },
-//   withCredentials: true,
-// });

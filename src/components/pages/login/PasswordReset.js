@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import PasswordResetFetch from "./PasswordResetFetch";
-import "./loginPage.css";
 
 const PasswordReset = () => {
   const [isError, setIsError] = useState(false);

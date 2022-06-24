@@ -7,11 +7,9 @@ import RightSideButtons from "../Header/RightSideButtons";
 import useAuth from "../../hooks/useAuth";
 import useGetMyOrders from "../../api/useGetMyOrders";
 
-import "./MyOrders.css";
-import ShareModal from "./ShareModal";
+// import ShareModal from "./ShareModal";
 
 const MyOrdersPage = () => {
-  // const { lang, showShareModal } = useGlobalContext();
   const [myOrders, setMyOrders] = useState([]);
   const { auth } = useAuth();
   const orders = useGetMyOrders();

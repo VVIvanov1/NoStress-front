@@ -1,5 +1,5 @@
 import React from "react";
-import "../../main-area.css";
+// import "../../main-area.css";
 import { Route, Routes } from "react-router-dom";
 
 import MainPage from "../pages/MainPage";

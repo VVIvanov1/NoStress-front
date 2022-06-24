@@ -5,7 +5,7 @@ import { FaEdit, FaRegSave } from "react-icons/fa";
 const Comments = ({ id, user, comments }) => {
   const { lang } = useGlobalContext();
   const [thisCardComments, setThisCardComments] = useState();
-  const [toggleComments, setToggleComments] = useState(false);
+
   const [newCommentForm, setNewCommentForm] = useState(false);
   const [textComment, setTextComment] = useState("");
 
@@ -13,8 +13,6 @@ const Comments = ({ id, user, comments }) => {
     setThisCardComments(comments);
   }, []);
   const handleNewComment = (id) => {
-    // console.log(id);
-    // console.log(user);
     console.log(textComment);
   };
   const fillCommentText = (e) => {

@@ -3,7 +3,7 @@ import { IoIosRefresh } from "react-icons/io";
 import { VscFilter, VscFilterFilled } from "react-icons/vsc";
 import { useGlobalContext } from "../../context";
 import { useNavigate } from "react-router-dom";
-import "../../right-buttons-block.css";
+// import "../../right-buttons-block.css";
 
 const RightSideButtons = () => {
   const navigate = useNavigate();

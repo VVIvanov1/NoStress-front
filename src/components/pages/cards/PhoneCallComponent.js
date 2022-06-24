@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { FaPhoneAlt, FaWhatsapp } from "react-icons/fa";
-import "../../../contact.css";
+import "../../../Styles/contact.css";
 const PhoneCallComponent = ({ phone }) => {
   const [expandContact, setExpandContact] = useState(false);
   const [device, setDevice] = useState("");

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import "../../newOrder.css";
+
 import { FaTimes } from "react-icons/fa";
 import { useGlobalContext } from "../../context";
 import useAuth from "../../hooks/useAuth";
